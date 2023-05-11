@@ -20,12 +20,12 @@ export default function Months({ setMonth, month }) {
       {months.map((monthItem, i) => (
         <div
           className={
-            month !== monthItem.monthUk
+            month !== monthItem.id
               ? "border-solid text-[12px] font-medium text-gray-700  tracking-wider border hover:text-white hover:bg-indigo-500  hover:border-indigo-500 border-indigo-600 cursor-pointer rounded-full px-3 py-1"
               : "border-solid text-[12px] font-medium text-white bg-indigo-600 tracking-wider border border-indigo-600  rounded-full px-3 py-1"
           }
           key={monthItem.id}
-          onClick={() => setMonth(monthItem.monthUk)}
+          onClick={() => setMonth(monthItem.id)}
         >
           {monthItem.monthUk}
         </div>
