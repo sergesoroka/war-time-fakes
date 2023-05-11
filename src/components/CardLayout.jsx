@@ -3,21 +3,14 @@ import Card from "./Card";
 import Months from "./Months";
 import Chart from "./Chart";
 import useMeasure from "react-use-measure";
+import { motion } from "framer-motion";
 
 export default function CardLayout({ data, page, setPage, month, setMonth }) {
   let [ref, bounds] = useMeasure();
 
   // /api/wpposts?year=2023&month=5&per_page=6&tag=2&category=2&search=string
 
-  // useEffect(() => {
-  //   fetch(`https://vox-dashboard.ra-devs.tech/api/wpposts?page=${page}&year=2023`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setData(data);
-  //       setLoading(false);
-  //     });
-  // }, [page]);
-
+  console.log(data);
   return (
     <div>
       <div className="items-center px-6 text-blue-500 my-8" ref={ref}>
@@ -30,15 +23,21 @@ export default function CardLayout({ data, page, setPage, month, setMonth }) {
       >
         <Chart width={bounds.width} hight={bounds.height} data={data} />
       </div>
+      {data && data.data.length < 1 && (
+        <div className="flex justify-center text-indigo-700">Немає даних</div>
+      )}
       <div className="grid gap-2 lg:grid-cols-3 sm:grid-cols-1">
         {data
-          ? data.data.map((item) => (
-              <Card
-                key={item.id}
-                cardData={item}
-                cat={item.categories[0].title}
-              />
-            ))
+          ? data.data.map((item, i) => {
+              return (
+                <Card
+                  key={item.id}
+                  cardData={item}
+                  cat={item.categories[0].title}
+                  index={i}
+                />
+              );
+            })
           : "loading"}
       </div>
       <div className="flex justify-center items-baseline mt-6">

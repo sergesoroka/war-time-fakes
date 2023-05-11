@@ -1,10 +1,9 @@
-import React from "react";
+import { motion } from "framer-motion";
 import { format } from "date-fns";
 import { uk } from "date-fns/locale";
 import Link from "next/link";
 
-export default function Card({ cardData, cat }) {
-
+export default function Card({ cardData, cat, index }) {
   const colorCat =
     cat === "НЕПРАВДА"
       ? "text-red-600"
@@ -15,7 +14,12 @@ export default function Card({ cardData, cat }) {
       : "text-indigo-600";
 
   return (
-    <div className=" m-4">
+    <motion.div
+      className=" m-4"
+      initial={{ opacity: 0, y: -35 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={ index < 3 ?  {duration: 0.3, type: "spring" }: {duration: 0.6, type: "spring" }}
+    >
       <p className="text-xs text-gray-500">
         <span className={`text-xs ${colorCat} font-bold mr-4`}>
           {cardData.categories[0].title}
@@ -28,6 +32,6 @@ export default function Card({ cardData, cat }) {
         </h2>
       </Link>
       <p className="text-xs font-bold text-gray-500 mt-4"># TAG</p>
-    </div>
+    </motion.div>
   );
 }
