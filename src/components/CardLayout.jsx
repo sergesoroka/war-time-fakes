@@ -1,16 +1,14 @@
-import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import Card from "./Card";
 import Months from "./Months";
 import Chart from "./Chart";
 import useMeasure from "react-use-measure";
-import { motion } from "framer-motion";
 
 export default function CardLayout({ data, page, setPage, month, setMonth }) {
   let [ref, bounds] = useMeasure();
+  const router = useRouter();
+  const { locale } = router;
 
-  // /api/wpposts?year=2023&month=5&per_page=6&tag=2&category=2&search=string
-
-  console.log(data);
   return (
     <div>
       <div className="items-center px-6 text-blue-500 my-8" ref={ref}>
@@ -26,7 +24,7 @@ export default function CardLayout({ data, page, setPage, month, setMonth }) {
       {data && data.data.length < 1 && (
         <div className="flex justify-center text-indigo-700">Немає даних</div>
       )}
-      <div className="grid gap-2 lg:grid-cols-3 sm:grid-cols-1">
+      <div className="h-[400px] grid gap-2 lg:grid-cols-3 sm:grid-cols-1">
         {data
           ? data.data.map((item, i) => {
               return (
@@ -62,17 +60,24 @@ export default function CardLayout({ data, page, setPage, month, setMonth }) {
               />
             </svg>
 
-            <span className="mr-1 ml-2">Попередня</span>
+            <span className="mr-1 ml-2">
+              {locale === "ua" ? "Попередня" : "Предыдущая"}
+            </span>
           </button>
         )}
         <p className="font-medium w-40 text-center text-indigo-500">
-          <span className="text-[16px] ">Сторінка:</span> {page}
+          <span className="text-[16px] ">
+            {locale === "ua" ? "Сторінка:" : "Страница:"}
+          </span>{" "}
+          {page}
         </p>
         <button
           className="flex justify-between border-solid text-xs font-medium text-white uppercase tracking-wider border-2 bg-indigo-600 hover:bg-indigo-500  hover:border-indigo-500 border-indigo-600 m-4 rounded-full px-2 py-1"
           onClick={() => setPage(page + 1)}
         >
-          <span className="mr-2 ml-1">Наступна</span>
+          <span className="mr-2 ml-1">
+            {locale === "ua" ? "Наступна" : "Следующая"}
+          </span>
           <svg
             width="10"
             height="17"

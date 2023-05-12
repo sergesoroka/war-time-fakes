@@ -1,5 +1,9 @@
+import { useRouter } from "next/router";
+
 export default function Sidebar({ year, setYear, category, setCategory }) {
- 
+  const router = useRouter();
+  const { locale } = router;
+
   return (
     <div>
       <ul className="text-gray-800 text-[14px] font-medium ml-4 mb-8">
@@ -82,7 +86,7 @@ export default function Sidebar({ year, setYear, category, setCategory }) {
             }
             onClick={() => setCategory(3)}
           >
-            МАНІПУЛЯЦІЯ
+            {locale === "ua" ? 'МАНІПУЛЯЦІЯ' : 'МАНИПУЛЯЦИЯ'}
           </li>
           {category === 3 && (
             <svg

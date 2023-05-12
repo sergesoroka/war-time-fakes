@@ -1,6 +1,9 @@
-import React from "react";
+import { useRouter } from "next/router";
 
 export default function Months({ setMonth, month }) {
+  const router = useRouter();
+  const { locale } = router;
+
   const months = [
     { id: 1, monthUk: "Січень", monthRu: "Январь" },
     { id: 2, monthUk: "Лютий", monthRu: "Февраль" },
@@ -27,7 +30,7 @@ export default function Months({ setMonth, month }) {
           key={monthItem.id}
           onClick={() => setMonth(monthItem.id)}
         >
-          {monthItem.monthUk}
+          {locale === "ua" ? monthItem.monthUk : monthItem.monthRu}
         </div>
       ))}
     </div>

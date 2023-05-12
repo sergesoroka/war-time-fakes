@@ -49,6 +49,7 @@ export default function Chart({ width, hight, data }) {
           transition={{ duration: 4, type: "spring" }}
           d={d}
           fill="none"
+          strokeWidth={2}
           stroke="currentColor"
         />
         {yScale.ticks(5).map((max) => (
