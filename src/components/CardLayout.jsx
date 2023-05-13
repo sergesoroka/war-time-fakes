@@ -16,7 +16,7 @@ export default function CardLayout({ data, page, setPage, month, setMonth }) {
       </div>
 
       <div
-        className="my-8 ml-2 h-60 items-center bg-indigo-50 px-4 text-blue-500"
+        className="my-8 ml-2 h-60 items-center px-4 text-blue-500"
         ref={ref}
       >
         <Chart width={bounds.width} hight={bounds.height} data={data} />
