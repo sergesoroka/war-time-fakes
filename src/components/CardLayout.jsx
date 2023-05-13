@@ -11,7 +11,7 @@ export default function CardLayout({ data, page, setPage, month, setMonth }) {
 
   return (
     <div>
-      <div className="my-8 items-center px-6 text-blue-500" ref={ref}>
+      <div className="my-8 items-center pl-6 pr-2 text-blue-500" ref={ref}>
         <Months setMonth={setMonth} month={month} />
       </div>
 
@@ -39,10 +39,10 @@ export default function CardLayout({ data, page, setPage, month, setMonth }) {
             })
           : "loading"}
       </div>
-      <div className="mt-6 flex items-baseline justify-center">
+      <div className="mt-6 flex items-center justify-center">
         
           <button
-            className={` ${page < 1 && 'invisible'} m-4 flex justify-between rounded-full border-2 border-solid border-indigo-600 bg-indigo-600 px-4 py-2 text-xs  font-medium uppercase tracking-wider text-white hover:border-indigo-500 hover:bg-indigo-500`}
+            className={` ${page < 1 && 'invisible'} m-4 flex justify-between items-center rounded-full border-2 border-solid border-indigo-600 bg-indigo-600 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white hover:border-indigo-500 hover:bg-indigo-500`}
             onClick={() => setPage(page - 1)}
           >
             <svg
@@ -73,7 +73,7 @@ export default function CardLayout({ data, page, setPage, month, setMonth }) {
           <span className="w-4 ml-2">{page}</span>
         </p>
         <button
-          className="m-4 flex justify-between rounded-full border-2 border-solid border-indigo-600 bg-indigo-600 px-4 py-2 text-xs  font-medium uppercase tracking-wider text-white hover:border-indigo-500 hover:bg-indigo-500"
+          className="m-4 flex justify-between items-center rounded-full border-2 border-solid border-indigo-600 bg-indigo-600 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white hover:border-indigo-500 hover:bg-indigo-500"
           onClick={() => setPage(page + 1)}
         >
           <span className="ml-1 mr-2">
