@@ -70,7 +70,7 @@ export default function CardLayout({ data, page, setPage, month, setMonth }) {
           <span className="text-[16px] ">
             {locale === "ua" ? "Сторінка:" : "Страница:"}
           </span>
-          <span className="w-4 ml-2">{page}</span>
+          <span className="w-4 ml-2">{page + 1}</span>
         </p>
         <button
           className="m-4 flex justify-between items-center rounded-full border-2 border-solid border-indigo-600 bg-indigo-600 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white hover:border-indigo-500 hover:bg-indigo-500"
