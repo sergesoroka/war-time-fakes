@@ -31,7 +31,7 @@ export default function Card({ cardData, cat, index }) {
       }
     >
       <p className="text-xs text-gray-500">
-        <span className={`text-xs ${colorCat} mr-4 font-bold`}>
+        <span className={`text-sm tracking-wider ${colorCat} mr-4 font-bold`}>
           {locale === "ua"
             ? cardData.categories[0].title
             : cardData.categories[0].title_ru}

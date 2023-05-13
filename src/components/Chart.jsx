@@ -82,7 +82,7 @@ export default function Chart({ width, hight, data }) {
                 fill="#5D63FF"
                 x={20 + i * 100}
                 opacity={0.1}
-                height={hight}
+                height={hight + 10}
                 width={100}
               />
             );
