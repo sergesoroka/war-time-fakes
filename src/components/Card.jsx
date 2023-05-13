@@ -8,7 +8,7 @@ export default function Card({ cardData, cat, index }) {
   const router = useRouter();
   const { locale } = router;
 
-  const lang = locale === 'ua' ? uk : ru
+  const lang = locale === "ua" ? uk : ru;
 
   const colorCat =
     cat === "НЕПРАВДА"
@@ -31,7 +31,7 @@ export default function Card({ cardData, cat, index }) {
       }
     >
       <p className="text-xs text-gray-500">
-        <span className={`text-xs ${colorCat} font-bold mr-4`}>
+        <span className={`text-xs ${colorCat} mr-4 font-bold`}>
           {locale === "ua"
             ? cardData.categories[0].title
             : cardData.categories[0].title_ru}
@@ -39,11 +39,11 @@ export default function Card({ cardData, cat, index }) {
         {format(new Date(cardData.date), "dd MMMM yyyy", { locale: lang })}
       </p>
       <Link href={cardData.url} target="_blank" rel="noreferrer">
-        <h2 className="mt-4 text-gray-800 hover:text-violet-600 font-medium transition duration-300 ease-in-out">
+        <h2 className="mt-4 font-medium text-gray-800 transition duration-300 ease-in-out hover:text-violet-600">
           {locale === "ua" ? cardData.title : cardData.title_ru}
         </h2>
       </Link>
-      <p className="text-xs font-bold text-gray-500 mt-4"># TAG</p>
+      <p className="mt-4 text-xs font-bold text-gray-500"># TAG</p>
     </motion.div>
   );
 }

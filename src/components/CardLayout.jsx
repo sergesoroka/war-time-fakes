@@ -11,12 +11,12 @@ export default function CardLayout({ data, page, setPage, month, setMonth }) {
 
   return (
     <div>
-      <div className="items-center px-6 text-blue-500 my-8" ref={ref}>
+      <div className="my-8 items-center px-6 text-blue-500" ref={ref}>
         <Months setMonth={setMonth} month={month} />
       </div>
 
       <div
-        className="h-60 items-center ml-2 px-4 bg-indigo-50 text-blue-500 my-8"
+        className="my-8 ml-2 h-60 items-center bg-indigo-50 px-4 text-blue-500"
         ref={ref}
       >
         <Chart width={bounds.width} hight={bounds.height} data={data} />
@@ -24,7 +24,8 @@ export default function CardLayout({ data, page, setPage, month, setMonth }) {
       {data && data.data.length < 1 && (
         <div className="flex justify-center text-indigo-700">Немає даних</div>
       )}
-      <div className="h-[400px] grid gap-2 lg:grid-cols-3 sm:grid-cols-1">
+
+      <div className="grid h-[420px] gap-2 sm:grid-cols-1 lg:grid-cols-3">
         {data
           ? data.data.map((item, i) => {
               return (
@@ -38,10 +39,10 @@ export default function CardLayout({ data, page, setPage, month, setMonth }) {
             })
           : "loading"}
       </div>
-      <div className="flex justify-center items-baseline mt-6">
-        {page > 1 && (
+      <div className="mt-6 flex items-baseline justify-center">
+        
           <button
-            className="flex justify-between border-solid text-xs font-medium text-white uppercase tracking-wider border-2 bg-indigo-600 hover:bg-indigo-500  hover:border-indigo-500 border-indigo-600 m-4 rounded-full px-2 py-1"
+            className={` ${page < 1 && 'invisible'} m-4 flex justify-between rounded-full border-2 border-solid border-indigo-600 bg-indigo-600 px-4 py-2 text-xs  font-medium uppercase tracking-wider text-white hover:border-indigo-500 hover:bg-indigo-500`}
             onClick={() => setPage(page - 1)}
           >
             <svg
@@ -52,30 +53,30 @@ export default function CardLayout({ data, page, setPage, month, setMonth }) {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M10.0001 1.50001L8.50005 0L1.50005 7L1.50001 6.99995L0 8.49996L4.53289e-05 8.50001L7.68805e-06 8.50004L1.50002 10.0001L1.50005 10L8.50004 17L10.0001 15.5L3.00006 8.50001L10.0001 1.50001Z"
                 fill="white"
-                fill-opacity="0.9"
+                fillOpacity="0.9"
               />
             </svg>
 
-            <span className="mr-1 ml-2">
+            <span className="ml-2 mr-1">
               {locale === "ua" ? "Попередня" : "Предыдущая"}
             </span>
           </button>
-        )}
-        <p className="font-medium w-40 text-center text-indigo-500">
+  
+        <p className="w-40 text-center font-medium text-indigo-500">
           <span className="text-[16px] ">
             {locale === "ua" ? "Сторінка:" : "Страница:"}
-          </span>{" "}
-          {page}
+          </span>
+          <span className="w-4 ml-2">{page}</span>
         </p>
         <button
-          className="flex justify-between border-solid text-xs font-medium text-white uppercase tracking-wider border-2 bg-indigo-600 hover:bg-indigo-500  hover:border-indigo-500 border-indigo-600 m-4 rounded-full px-2 py-1"
+          className="m-4 flex justify-between rounded-full border-2 border-solid border-indigo-600 bg-indigo-600 px-4 py-2 text-xs  font-medium uppercase tracking-wider text-white hover:border-indigo-500 hover:bg-indigo-500"
           onClick={() => setPage(page + 1)}
         >
-          <span className="mr-2 ml-1">
+          <span className="ml-1 mr-2">
             {locale === "ua" ? "Наступна" : "Следующая"}
           </span>
           <svg
@@ -86,11 +87,11 @@ export default function CardLayout({ data, page, setPage, month, setMonth }) {
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M9.53674e-07 1.50001L1.50001 0L8.50001 7L8.50005 6.99995L10.0001 8.49996L10 8.50001L10.0001 8.50004L8.50005 10.0001L8.50001 10L1.50002 17L8.58307e-06 15.5L7 8.50001L9.53674e-07 1.50001Z"
               fill="white"
-              fill-opacity="0.9"
+              fillOpacity="0.9"
             />
           </svg>
         </button>

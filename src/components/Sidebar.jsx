@@ -6,12 +6,12 @@ export default function Sidebar({ year, setYear, category, setCategory }) {
 
   return (
     <div>
-      <ul className="text-gray-800 text-[14px] font-medium ml-4 mb-8">
+      <ul className="mb-8 ml-4 text-[14px] font-bold text-gray-800">
         <li
           className={
             year === 2022
-              ? "mt-2 pl-2 border-l-4 border-indigo-600 text-indigo-600 tracking-wider"
-              : "mt-2 pl-3 cursor-pointer tracking-wider transition duration-75 ease-out"
+              ? "mt-1 select-none border-l-4 py-1 border-indigo-600 pl-2 tracking-wider text-indigo-600"
+              : "mt-1 select-none cursor-pointer py-1 pl-3 tracking-wider transition duration-75 ease-out"
           }
           onClick={() => setYear(2022)}
         >
@@ -20,21 +20,21 @@ export default function Sidebar({ year, setYear, category, setCategory }) {
         <li
           className={
             year === 2023
-              ? "mt-2 pl-2 border-l-4 border-indigo-600 text-indigo-600 tracking-wider"
-              : "mt-2 pl-3 cursor-pointer tracking-wider"
+              ? "mt-1 select-none border-l-4 py-1 border-indigo-600 pl-2 tracking-wider text-indigo-600"
+              : "mt-1 select-none cursor-pointer py-1 pl-3 tracking-wider"
           }
           onClick={() => setYear(2023)}
         >
           2023
         </li>
       </ul>
-      <ul className="text-gray-800 text-[14px] font-medium ml-4">
+      <ul className="ml-4 text-[14px] font-medium text-gray-800">
         <div className="flex justify-start">
           <li
             className={
               category === 1
-                ? "w-40 bg-indigo-600 text-white px-3  py-1"
-                : "px-3  py-1 cursor-pointer tracking-wider"
+                ? "mb-3 select-none w-40 bg-indigo-600 px-3  py-1 text-white"
+                : "mb-3 select-none cursor-pointer px-3 py-1 tracking-wider text-indigo-600"
             }
             onClick={() => setCategory(1)}
           >
@@ -57,8 +57,8 @@ export default function Sidebar({ year, setYear, category, setCategory }) {
           <li
             className={
               category === 2
-                ? "w-40 bg-red-600 text-white px-3  py-1"
-                : "px-3 text-gray-800 py-1 cursor-pointer tracking-wider"
+                ? "mb-3 select-none w-40 bg-red-600 px-3  py-1 text-white"
+                : "mb-3 select-none cursor-pointer px-3 py-1 tracking-wider text-gray-800 text-red-600"
             }
             onClick={() => setCategory(2)}
           >
@@ -81,12 +81,12 @@ export default function Sidebar({ year, setYear, category, setCategory }) {
           <li
             className={
               category === 3
-                ? "w-40 bg-amber-400 text-white px-3  py-1"
-                : "px-3 text-gray-800 py-1 cursor-pointer tracking-wider"
+                ? "mb-3 select-none w-40 bg-amber-400 px-3  py-1 text-white"
+                : "mb-3 select-none cursor-pointer px-3 py-1 tracking-wider text-amber-500"
             }
             onClick={() => setCategory(3)}
           >
-            {locale === "ua" ? 'МАНІПУЛЯЦІЯ' : 'МАНИПУЛЯЦИЯ'}
+            {locale === "ua" ? "МАНІПУЛЯЦІЯ" : "МАНИПУЛЯЦИЯ"}
           </li>
           {category === 3 && (
             <svg
@@ -105,8 +105,8 @@ export default function Sidebar({ year, setYear, category, setCategory }) {
           <li
             className={
               category === 4
-                ? "w-40 bg-sky-600 text-white px-3  py-1"
-                : "px-3 text-gray-800 py-1 cursor-pointer tracking-wider"
+                ? "w-40 bg-sky-600 select-none px-3 py-1  text-white"
+                : "cursor-pointer select-none px-3 py-1 tracking-wider  text-sky-600"
             }
             onClick={() => setCategory(4)}
           >
