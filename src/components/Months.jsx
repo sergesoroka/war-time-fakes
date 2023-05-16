@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-export default function Months({ setMonth, month }) {
+export default function Months({ setMonth, month, setPage }) {
   const router = useRouter();
   const { locale } = router;
 
@@ -19,16 +19,19 @@ export default function Months({ setMonth, month }) {
     { id: 12, monthUk: "Грудень", monthRu: "Декабрь" },
   ];
   return (
-    <div className="flex justify-between">
+    <div className="flex flex-wrap justify-between">
       {months.map((monthItem, i) => (
         <div
           className={
             month !== monthItem.id
-              ? "border-solid select-none text-[12px] font-medium text-gray-700  tracking-wider border hover:text-white hover:bg-indigo-500  hover:border-indigo-500 border-indigo-600 cursor-pointer rounded-full px-3 py-1"
-              : "border-solid select-none text-[12px] font-medium text-white bg-indigo-600 tracking-wider border border-indigo-600  rounded-full px-3 py-1"
+              ? "cursor-pointer select-none rounded-full border border-solid  border-indigo-600 px-3 py-1 text-[12px]  font-medium tracking-wider text-gray-700 hover:border-indigo-500 hover:bg-indigo-500 hover:text-white"
+              : "select-none rounded-full border border-solid border-indigo-600 bg-indigo-600 px-3 py-1 text-[12px]  font-medium tracking-wider text-white"
           }
           key={monthItem.id}
-          onClick={() => setMonth(monthItem.id)}
+          onClick={() => {
+            setMonth(monthItem.id);
+            setPage(0);
+          }}
         >
           {locale === "ua" ? monthItem.monthUk : monthItem.monthRu}
         </div>

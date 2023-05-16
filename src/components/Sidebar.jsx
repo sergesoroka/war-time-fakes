@@ -1,6 +1,12 @@
 import { useRouter } from "next/router";
 
-export default function Sidebar({ year, setYear, category, setCategory }) {
+export default function Sidebar({
+  year,
+  setYear,
+  category,
+  setCategory,
+  setPage,
+}) {
   const router = useRouter();
   const { locale } = router;
 
@@ -10,20 +16,26 @@ export default function Sidebar({ year, setYear, category, setCategory }) {
         <li
           className={
             year === 2022
-              ? "mt-1 select-none border-l-4 py-1 border-indigo-600 pl-2 tracking-wider text-indigo-600"
-              : "mt-1 select-none cursor-pointer py-1 pl-3 tracking-wider transition duration-75 ease-out"
+              ? "mt-1 select-none border-l-4 border-indigo-600 py-1 pl-2 tracking-wider text-indigo-600"
+              : "mt-1 cursor-pointer select-none py-1 pl-3 tracking-wider transition duration-75 ease-out"
           }
-          onClick={() => setYear(2022)}
+          onClick={() => {
+            setYear(2022);
+            setPage(0);
+          }}
         >
           2022
         </li>
         <li
           className={
             year === 2023
-              ? "mt-1 select-none border-l-4 py-1 border-indigo-600 pl-2 tracking-wider text-indigo-600"
-              : "mt-1 select-none cursor-pointer py-1 pl-3 tracking-wider"
+              ? "mt-1 select-none border-l-4 border-indigo-600 py-1 pl-2 tracking-wider text-indigo-600"
+              : "mt-1 cursor-pointer select-none py-1 pl-3 tracking-wider"
           }
-          onClick={() => setYear(2023)}
+          onClick={() => {
+            setYear(2023);
+            setPage(0);
+          }}
         >
           2023
         </li>
@@ -33,10 +45,13 @@ export default function Sidebar({ year, setYear, category, setCategory }) {
           <li
             className={
               category === 1
-                ? "mb-3 select-none w-40 bg-indigo-600 px-3  py-1 text-white"
-                : "mb-3 select-none cursor-pointer px-3 py-1 tracking-wider text-indigo-600"
+                ? "mb-3 w-40 select-none bg-indigo-600 px-3  py-1 text-white"
+                : "mb-3 cursor-pointer select-none px-3 py-1 tracking-wider text-indigo-600"
             }
-            onClick={() => setCategory(1)}
+            onClick={() => {
+              setCategory(1);
+              setPage(0);
+            }}
           >
             ФЕЙК
           </li>
@@ -57,10 +72,13 @@ export default function Sidebar({ year, setYear, category, setCategory }) {
           <li
             className={
               category === 2
-                ? "mb-3 select-none w-40 bg-red-600 px-3  py-1 text-white"
-                : "mb-3 select-none cursor-pointer px-3 py-1 tracking-wider text-gray-800 text-red-600"
+                ? "mb-3 w-40 select-none bg-red-600 px-3  py-1 text-white"
+                : "mb-3 cursor-pointer select-none px-3 py-1 tracking-wider text-gray-800 text-red-600"
             }
-            onClick={() => setCategory(2)}
+            onClick={() => {
+              setCategory(2);
+              setPage(0);
+            }}
           >
             НЕПРАВДА
           </li>
@@ -81,10 +99,13 @@ export default function Sidebar({ year, setYear, category, setCategory }) {
           <li
             className={
               category === 3
-                ? "mb-3 select-none w-40 bg-amber-400 px-3  py-1 text-white"
-                : "mb-3 select-none cursor-pointer px-3 py-1 tracking-wider text-amber-500"
+                ? "mb-3 w-40 select-none bg-amber-400 px-3  py-1 text-white"
+                : "mb-3 cursor-pointer select-none px-3 py-1 tracking-wider text-amber-500"
             }
-            onClick={() => setCategory(3)}
+            onClick={() => {
+              setCategory(3);
+              setPage(0);
+            }}
           >
             {locale === "ua" ? "МАНІПУЛЯЦІЯ" : "МАНИПУЛЯЦИЯ"}
           </li>
@@ -105,7 +126,7 @@ export default function Sidebar({ year, setYear, category, setCategory }) {
           <li
             className={
               category === 4
-                ? "w-40 bg-sky-600 select-none px-3 py-1  text-white"
+                ? "w-40 select-none bg-sky-600 px-3 py-1  text-white"
                 : "cursor-pointer select-none px-3 py-1 tracking-wider  text-sky-600"
             }
             onClick={() => setCategory(4)}

@@ -16,7 +16,9 @@ export default function Home() {
   const [isLoading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
 
-  const yearPlaceholder = year ? '&year=' + year : null
+  const yearPlaceholder = year ? "&year=" + year : null;
+
+  const [results, setResults] = useState([]);
 
   useEffect(() => {
     fetch(
@@ -27,18 +29,19 @@ export default function Home() {
         setData(data);
         setLoading(false);
       });
-  }, [page, year, month, category]);
+  }, [page, year, month, category, yearPlaceholder]);
 
   return (
     <div className="w-full">
-      <Header />
-      <div className="flex justify-between mx-4">
-        <div className="w-1/6 mt-4">
+      <Header setResults={setResults} />
+      <div className="mx-4 flex justify-between">
+        <div className="mt-4 w-1/6">
           <Sidebar
             year={year}
             setYear={setYear}
             category={category}
             setCategory={setCategory}
+            setPage={setPage}
           />
         </div>
         <div className="w-5/6">
@@ -48,6 +51,7 @@ export default function Home() {
             setPage={setPage}
             month={month}
             setMonth={setMonth}
+            results={results}
           />
         </div>
       </div>

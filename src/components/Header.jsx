@@ -1,10 +1,12 @@
 import { useRouter } from "next/router";
+import SearchBar from "../components/SearchBar";
 
-export default function VOXCHECK() {
+export default function Header({ setResults }) {
   const router = useRouter();
   const { pathname, asPath, query, locale } = router;
 
   const lang = locale === "ua" ? "ru" : "ua";
+  const placeholder = locale === "ua" ? "Пошук фейків" : "Поиск фейков";
 
   return (
     <div className="flex justify-between pr-4 pt-4">
@@ -12,12 +14,7 @@ export default function VOXCHECK() {
         VOX<span className="text-gray-700">CHECK</span>
       </div>
       <div>
-        <input className="w-96 border-indigo-600 px-4 h-8 rounded-full"
-          type="text"
-          // value={value}
-          // onChange={handleChange}
-          // placeholder={placeholdrer}
-        />
+        <SearchBar setResults={setResults} placeholder={placeholder} />
       </div>
       <div
         className="cursor-pointer pr-2 text-[13px] font-medium text-indigo-700"

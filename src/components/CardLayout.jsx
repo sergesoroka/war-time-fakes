@@ -4,7 +4,14 @@ import Months from "./Months";
 import Chart from "./Chart";
 import useMeasure from "react-use-measure";
 
-export default function CardLayout({ data, page, setPage, month, setMonth }) {
+export default function CardLayout({
+  data,
+  page,
+  setPage,
+  month,
+  setMonth,
+  results,
+}) {
   let [ref, bounds] = useMeasure();
   const router = useRouter();
   const { locale } = router;
@@ -12,13 +19,10 @@ export default function CardLayout({ data, page, setPage, month, setMonth }) {
   return (
     <div>
       <div className="my-8 items-center pl-6 pr-2 text-blue-500" ref={ref}>
-        <Months setMonth={setMonth} month={month} />
+        <Months setMonth={setMonth} month={month} setPage={setPage} />
       </div>
 
-      <div
-        className="my-8 ml-2 h-60 items-center px-4 text-blue-500"
-        ref={ref}
-      >
+      <div className="my-8 ml-2 h-60 items-center px-4 text-blue-500" ref={ref}>
         <Chart width={bounds.width} hight={bounds.height} data={data} />
       </div>
       {data && data.data.length < 1 && (
@@ -26,7 +30,7 @@ export default function CardLayout({ data, page, setPage, month, setMonth }) {
       )}
 
       <div className="grid h-[420px] gap-2 sm:grid-cols-1 lg:grid-cols-3">
-        {data
+        {results.length < 1 && data
           ? data.data.map((item, i) => {
               return (
                 <Card
@@ -37,43 +41,54 @@ export default function CardLayout({ data, page, setPage, month, setMonth }) {
                 />
               );
             })
-          : "loading"}
+          : results &&
+            results.map((item, i) => {
+              return (
+                <Card
+                  key={item.id}
+                  cardData={item}
+                  cat={item.categories[0].title}
+                  index={i}
+                />
+              );
+            })}
       </div>
       <div className="mt-6 flex items-center justify-center">
-        
-          <button
-            className={` ${page < 1 && 'invisible'} m-4 flex justify-between items-center rounded-full border-2 border-solid border-indigo-600 bg-indigo-600 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white hover:border-indigo-500 hover:bg-indigo-500`}
-            onClick={() => setPage(page - 1)}
+        <button
+          className={` ${
+            page < 1 && "invisible"
+          } m-4 flex items-center justify-between rounded-full border-2 border-solid border-indigo-600 bg-indigo-600 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white hover:border-indigo-500 hover:bg-indigo-500`}
+          onClick={() => setPage(page - 1)}
+        >
+          <svg
+            width="10"
+            height="17"
+            viewBox="0 0 10 17"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              width="10"
-              height="17"
-              viewBox="0 0 10 17"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M10.0001 1.50001L8.50005 0L1.50005 7L1.50001 6.99995L0 8.49996L4.53289e-05 8.50001L7.68805e-06 8.50004L1.50002 10.0001L1.50005 10L8.50004 17L10.0001 15.5L3.00006 8.50001L10.0001 1.50001Z"
-                fill="white"
-                fillOpacity="0.9"
-              />
-            </svg>
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M10.0001 1.50001L8.50005 0L1.50005 7L1.50001 6.99995L0 8.49996L4.53289e-05 8.50001L7.68805e-06 8.50004L1.50002 10.0001L1.50005 10L8.50004 17L10.0001 15.5L3.00006 8.50001L10.0001 1.50001Z"
+              fill="white"
+              fillOpacity="0.9"
+            />
+          </svg>
 
-            <span className="ml-2 mr-1">
-              {locale === "ua" ? "Попередня" : "Предыдущая"}
-            </span>
-          </button>
-  
+          <span className="ml-2 mr-1">
+            {locale === "ua" ? "Попередня" : "Предыдущая"}
+          </span>
+        </button>
+
         <p className="w-40 text-center font-medium text-indigo-500">
           <span className="text-[16px] ">
             {locale === "ua" ? "Сторінка:" : "Страница:"}
           </span>
-          <span className="w-4 ml-2">{page + 1}</span>
+          <span className="ml-2 w-4">{page + 1}</span>
         </p>
         <button
-          className="m-4 flex justify-between items-center rounded-full border-2 border-solid border-indigo-600 bg-indigo-600 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white hover:border-indigo-500 hover:bg-indigo-500"
+          className="m-4 flex items-center justify-between rounded-full border-2 border-solid border-indigo-600 bg-indigo-600 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white hover:border-indigo-500 hover:bg-indigo-500"
           onClick={() => setPage(page + 1)}
         >
           <span className="ml-1 mr-2">
