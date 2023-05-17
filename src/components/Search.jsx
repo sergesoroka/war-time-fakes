@@ -1,4 +1,5 @@
 function Search({ value, handleChange, placeholder }) {
+
   return (
     <div>
       <input

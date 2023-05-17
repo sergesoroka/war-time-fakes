@@ -29,7 +29,7 @@ export default function Home() {
         setData(data);
         setLoading(false);
       });
-  }, [page, year, month, category, yearPlaceholder]);
+  }, [page, year, month, category, yearPlaceholder, results]);
 
   return (
     <div className="w-full">

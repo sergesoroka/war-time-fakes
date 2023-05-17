@@ -30,6 +30,7 @@ export default function Card({ cardData, cat, index }) {
           : { duration: 0.6, type: "spring" }
       }
     >
+      
       <p className="text-xs text-gray-500">
         <span className={`text-sm tracking-wider ${colorCat} mr-4 font-bold`}>
           {locale === "ua"

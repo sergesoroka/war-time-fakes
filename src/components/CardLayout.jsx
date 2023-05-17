@@ -29,29 +29,32 @@ export default function CardLayout({
         <div className="flex justify-center text-indigo-700">Немає даних</div>
       )}
 
-      <div className="grid h-[420px] gap-2 sm:grid-cols-1 lg:grid-cols-3">
-        {results.length < 1 && data
-          ? data.data.map((item, i) => {
-              return (
-                <Card
-                  key={item.id}
-                  cardData={item}
-                  cat={item.categories[0].title}
-                  index={i}
-                />
-              );
-            })
-          : results &&
-            results.map((item, i) => {
-              return (
-                <Card
-                  key={item.id}
-                  cardData={item}
-                  cat={item.categories[0].title}
-                  index={i}
-                />
-              );
-            })}
+      <div className="grid  gap-2 sm:grid-cols-1 lg:grid-cols-3">
+        {results.length < 1 &&
+          data &&
+          data.data.map((item, i) => {
+            return (
+              <Card
+                key={item.id}
+                cardData={item}
+                cat={item.categories[0].title}
+                index={i}
+              />
+            );
+          })}
+
+        {results.length > 0 &&
+          results.map((item, i) => {
+            return (
+              <Card
+                search={'search'}
+                key={item.id}
+                cardData={item}
+                cat={item.categories[0].title}
+                index={i}
+              />
+            );
+          })}
       </div>
       <div className="mt-6 flex items-center justify-center">
         <button
