@@ -20,13 +20,13 @@ export default function Header({ setResults }) {
         {/* <SearchBar setResults={setResults} placeholder={placeholder} /> */}
       </div>
       <div className="flex">
-        <Link href="/search">
-          {pathname == "/search" ? (
-            <p className="mr-4 cursor-pointer pr-2 text-[13px] font-medium text-indigo-700">
-              <Link href="/">{homepage}</Link>
-            </p>
-          ) : (
-            <p className="mr-4 cursor-pointer">
+        {pathname == "/search" ? (
+          <p className="mr-4 cursor-pointer pr-2 text-[13px] font-medium text-indigo-700">
+            <Link href="/">{homepage}</Link>
+          </p>
+        ) : (
+          <p className="mr-4 cursor-pointer">
+            <Link href="/search">
               <svg
                 width="22"
                 height="22"
@@ -42,9 +42,10 @@ export default function Header({ setResults }) {
                   fill-opacity="0.8"
                 />
               </svg>
-            </p>
-          )}
-        </Link>
+            </Link>
+          </p>
+        )}
+
         <p
           className="cursor-pointer pr-2 text-[13px] font-medium text-indigo-700"
           onClick={() =>

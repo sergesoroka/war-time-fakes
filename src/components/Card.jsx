@@ -30,7 +30,6 @@ export default function Card({ cardData, cat, index }) {
           : { duration: 0.6, type: "spring" }
       }
     >
-      
       <p className="text-xs text-gray-500">
         <span className={`text-sm tracking-wider ${colorCat} mr-4 font-bold`}>
           {locale === "ua"
@@ -39,11 +38,11 @@ export default function Card({ cardData, cat, index }) {
         </span>
         {format(new Date(cardData.date), "dd MMMM yyyy", { locale: lang })}
       </p>
-      <Link href={cardData.url} target="_blank" rel="noreferrer">
-        <h2 className="mt-4 font-medium text-gray-800 transition duration-300 ease-in-out hover:text-violet-600">
+      <h2 className="mt-4 font-medium text-gray-800 transition duration-300 ease-in-out hover:text-violet-600">
+        <Link href={cardData.url} target="_blank" rel="noreferrer">
           {locale === "ua" ? cardData.title : cardData.title_ru}
-        </h2>
-      </Link>
+        </Link>
+      </h2>
       <p className="mt-4 text-xs font-bold text-gray-500"># TAG</p>
     </motion.div>
   );
