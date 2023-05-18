@@ -1,4 +1,7 @@
 import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
+
+// https://vox-dashboard.ra-devs.tech/api/wpcategories
 
 export default function Sidebar({
   year,
@@ -9,6 +12,48 @@ export default function Sidebar({
 }) {
   const router = useRouter();
   const { locale } = router;
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch(`https://vox-dashboard.ra-devs.tech/api/wpcategories`)
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+      });
+  }, []);
+  console.log(data);
+
+  const categoriesList = data.map((cat) => {
+    return (
+      <div key={cat.id} className="flex justify-start">
+        <li
+          className={
+            category === cat.id
+              ? "mb-3 block w-40 select-none bg-indigo-600 px-3  py-1 text-white"
+              : "mb-3 block cursor-pointer select-none px-3 py-1 tracking-wider text-gray-800"
+          }
+          onClick={() => {
+            setCategory(cat.id);
+            setPage(0);
+          }}
+        >
+          {locale == 'ua' ? cat.title : cat.title_ru}
+        </li>
+        {category === cat.id && (
+          <svg
+            width="9"
+            height="29"
+            viewBox="0 0 9 29"
+            fill="#dc2626"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M0 0H1.63829L9 14.5L1.63829 29H0V0Z" fill="#4f46e5" />
+          </svg>
+        )}
+      </div>
+    );
+  });
 
   return (
     <div>
@@ -41,110 +86,7 @@ export default function Sidebar({
         </li>
       </ul>
       <ul className="ml-4 text-[14px] font-medium text-gray-800">
-        <div className="flex justify-start">
-          <li
-            className={
-              category === 1
-                ? "mb-3 w-40 select-none bg-indigo-600 px-3  py-1 text-white"
-                : "mb-3 cursor-pointer select-none px-3 py-1 tracking-wider text-indigo-600"
-            }
-            onClick={() => {
-              setCategory(1);
-              setPage(0);
-            }}
-          >
-            ФЕЙК
-          </li>
-          {category === 1 && (
-            <svg
-              width="9"
-              height="29"
-              viewBox="0 0 9 29"
-              fill="#4f46e5"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M0 0H1.63829L9 14.5L1.63829 29H0V0Z" fill="#4f46e5" />
-            </svg>
-          )}
-        </div>
-
-        <div className="flex justify-start">
-          <li
-            className={
-              category === 2
-                ? "mb-3 w-40 select-none bg-red-600 px-3  py-1 text-white"
-                : "mb-3 cursor-pointer select-none px-3 py-1 tracking-wider text-gray-800 text-red-600"
-            }
-            onClick={() => {
-              setCategory(2);
-              setPage(0);
-            }}
-          >
-            НЕПРАВДА
-          </li>
-          {category === 2 && (
-            <svg
-              width="9"
-              height="29"
-              viewBox="0 0 9 29"
-              fill="#dc2626"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M0 0H1.63829L9 14.5L1.63829 29H0V0Z" fill="#dc2626" />
-            </svg>
-          )}
-        </div>
-
-        <div className="flex justify-start">
-          <li
-            className={
-              category === 3
-                ? "mb-3 w-40 select-none bg-amber-400 px-3  py-1 text-white"
-                : "mb-3 cursor-pointer select-none px-3 py-1 tracking-wider text-amber-500"
-            }
-            onClick={() => {
-              setCategory(3);
-              setPage(0);
-            }}
-          >
-            {locale === "ua" ? "МАНІПУЛЯЦІЯ" : "МАНИПУЛЯЦИЯ"}
-          </li>
-          {category === 3 && (
-            <svg
-              width="9"
-              height="29"
-              viewBox="0 0 9 29"
-              fill="#fbbf24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M0 0H1.63829L9 14.5L1.63829 29H0V0Z" fill="#fbbf24" />
-            </svg>
-          )}
-        </div>
-        {/* #0284c7 */}
-        <div className="flex justify-start">
-          <li
-            className={
-              category === 4
-                ? "w-40 select-none bg-sky-600 px-3 py-1  text-white"
-                : "cursor-pointer select-none px-3 py-1 tracking-wider  text-sky-600"
-            }
-            onClick={() => setCategory(4)}
-          >
-            ФОТОФЕЙК
-          </li>
-          {category === 4 && (
-            <svg
-              width="9"
-              height="29"
-              viewBox="0 0 9 29"
-              fill="#0284c7"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M0 0H1.63829L9 14.5L1.63829 29H0V0Z" fill="#0284c7" />
-            </svg>
-          )}
-        </div>
+        {categoriesList}
       </ul>
     </div>
   );

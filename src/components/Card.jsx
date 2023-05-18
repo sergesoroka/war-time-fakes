@@ -4,20 +4,20 @@ import { uk, ru } from "date-fns/locale";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-export default function Card({ cardData, cat, index }) {
+export default function Card({ cardData, index }) {
   const router = useRouter();
   const { locale } = router;
 
   const lang = locale === "ua" ? uk : ru;
 
-  const colorCat =
-    cat === "НЕПРАВДА"
-      ? "text-red-600"
-      : cat === "МАНІПУЛЯЦІЯ"
-      ? "text-amber-400"
-      : cat === "ФОТОФЕЙК"
-      ? "text-sky-600"
-      : "text-indigo-600";
+  // const colorCat =
+  //   cardData.categories[0].title === "НЕПРАВДА"
+  //     ? "text-red-600"
+  //     : cardData.categories[0].title === "МАНІПУЛЯЦІЯ"
+  //     ? "text-amber-400"
+  //     : cardData.categories[0].title === "ФОТОФЕЙК"
+  //     ? "text-sky-600"
+  //     : "text-indigo-600";
 
   return (
     <motion.div
@@ -31,10 +31,14 @@ export default function Card({ cardData, cat, index }) {
       }
     >
       <p className="text-xs text-gray-500">
-        <span className={`text-sm tracking-wider ${colorCat} mr-4 font-bold`}>
-          {locale === "ua"
-            ? cardData.categories[0].title
-            : cardData.categories[0].title_ru}
+        <span
+          className={`mr-4 text-sm font-bold tracking-wider text-amber-400`}
+        >
+          {cardData.categories.map((cat) => (
+            <span key={cat.id}>
+              {locale === "ua" ? cat.title : cat.title_ru}
+            </span>
+          ))}
         </span>
         {format(new Date(cardData.date), "dd MMMM yyyy", { locale: lang })}
       </p>

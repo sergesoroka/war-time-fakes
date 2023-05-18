@@ -37,7 +37,7 @@ export default function CardLayout({
               <Card
                 key={item.id}
                 cardData={item}
-                cat={item.categories[0].title}
+                // cat={item.categories[0].title}
                 index={i}
               />
             );
