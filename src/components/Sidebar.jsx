@@ -31,11 +31,11 @@ export default function Sidebar({
           className={
             category === cat.id
               ? "mb-3 block w-40 select-none bg-indigo-600 px-3  py-1 text-white"
-              : "mb-3 block cursor-pointer select-none px-3 py-1 tracking-wider text-gray-800"
+              : "mb-3 block cursor-pointer select-none px-3 py-1 tracking-wider text-gray-600"
           }
           onClick={() => {
             setCategory(cat.id);
-            setPage(0);
+            setPage(1);
           }}
         >
           {locale == 'ua' ? cat.title : cat.title_ru}
@@ -66,7 +66,7 @@ export default function Sidebar({
           }
           onClick={() => {
             setYear(2022);
-            setPage(0);
+            setPage(1);
           }}
         >
           2022
@@ -79,7 +79,7 @@ export default function Sidebar({
           }
           onClick={() => {
             setYear(2023);
-            setPage(0);
+            setPage(1);
           }}
         >
           2023
@@ -87,6 +87,20 @@ export default function Sidebar({
       </ul>
       <ul className="ml-4 text-[14px] font-medium text-gray-800">
         {categoriesList}
+      </ul>
+      <ul className="ml-4 text-[14px] font-bold">
+      <li
+          className={
+            year == 2023 && category == 1
+              ? "mb-3 mt-6 pt-2 mr-6 border-t-4 border-gray-400 block select-none px-3 py-1 tracking-wider text-gray-400"
+              : "mb-3 mt-6 pt-2 mr-6 border-t-4 border-red-600 block cursor-pointer select-none px-3 py-1 tracking-wider text-red-600"
+          }
+          onClick={() => {
+            setCategory(1);
+            setPage(1);
+            setYear(2023)
+          }}
+        >СКИНУТИ УСІ ФІЛЬТРИ</li>
       </ul>
     </div>
   );
