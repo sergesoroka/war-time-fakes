@@ -44,15 +44,15 @@ export default function Card({ cardData, index }) {
         </span>
         {format(new Date(cardData.date), "dd MMMM yyyy", { locale: lang })}
       </p>
-      <h2 className="mt-4 font-medium text-gray-800 transition duration-300 ease-in-out hover:text-violet-600">
+      <h2 className="mt-4 mb-2 font-medium text-gray-800 transition duration-300 ease-in-out hover:text-violet-600">
         <Link href={cardData.url} target="_blank" rel="noreferrer">
           {locale === "ua" ? cardData.title : cardData.title_ru}
         </Link>
       </h2>
       {cardData.tags.map((tag) => (
-        <p key={tag.id} className="mt-4 text-xs tracking-wider uppercase font-medium text-gray-500">
-          # {locale === "ua" ? tag.title : tag.title_ru}
-        </p>
+        <span key={tag.id} className="mt-1 mr-3 inline-block text-xs tracking-wider uppercase font-medium text-gray-700">
+           #&nbsp;{locale === "ua" ? tag.title : tag.title_ru} 
+        </span>
       ))}
     </motion.div>
   );
