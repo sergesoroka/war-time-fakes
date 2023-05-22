@@ -19,7 +19,7 @@ export default function CardLayout({
 
 
   return (
-    <div>
+    <div className="flex flex-col justify-center">
       <div className="my-8 items-center pl-6 pr-2 text-blue-500" ref={ref}>
         <Months setMonth={setMonth} month={month} setPage={setPage} />
       </div>
@@ -65,11 +65,11 @@ export default function CardLayout({
           })}
       </div>
       {(data && data.data.length > 5) && (
-        <div className="mt-6 flex items-center justify-center">
+        <div className="mt-6 flex items-center lg:justify-center">
           <button
             className={` ${
               page < 2 && "invisible"
-            } m-4 flex items-center justify-between rounded-full border-2 border-solid border-indigo-600 bg-indigo-600 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white hover:border-indigo-500 hover:bg-indigo-500`}
+            } m-4 flex items-center justify-between rounded-full border-2 border-solid border-indigo-600 bg-indigo-600 px-2 lg:px-4 py-1 lg:py-2 text-[11px] lg:text-xs font-bold uppercase tracking-wider text-white hover:border-indigo-500 hover:bg-indigo-500`}
             onClick={() => setPage(page - 1)}
           >
             <svg
@@ -94,14 +94,14 @@ export default function CardLayout({
           </button>
 
           <p className="w-40 text-center font-medium text-indigo-500">
-            <span className="text-[16px] ">
+            <span className="text-[16px] hidden lg:inline-block ">
               {locale === "ua" ? "Сторінка:" : "Страница:"}
             </span>
             <span className="ml-2 w-4">{page}</span>
           </p>
           {data && !data.data.length < 1 && (
             <button
-              className="m-4 flex items-center justify-between rounded-full border-2 border-solid border-indigo-600 bg-indigo-600 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white hover:border-indigo-500 hover:bg-indigo-500"
+              className="m-4 flex items-center justify-between rounded-full border-2 border-solid border-indigo-600 bg-indigo-600 px-2 lg:px-4 py-1 lg:py-2 text-[11px] lg:text-xs font-bold uppercase tracking-wider text-white hover:border-indigo-500 hover:bg-indigo-500"
               onClick={() => setPage(page + 1)}
             >
               <span className="ml-1 mr-2">

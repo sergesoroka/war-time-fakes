@@ -34,8 +34,8 @@ export default function Home() {
   return (
     <div className="w-full">
       <Header setResults={setResults} />
-      <div className="mx-4 flex justify-between">
-        <div className="mt-4 w-1/6">
+      <div className="mx-4 lg:flex lg:justify-between">
+        <div className="mt-4 lg:w-1/6">
           <Sidebar
             year={year}
             setYear={setYear}

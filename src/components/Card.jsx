@@ -10,6 +10,8 @@ export default function Card({ cardData, index }) {
 
   const lang = locale === "ua" ? uk : ru;
 
+  console.log(cardData.tags);
+
   // const colorCat =
   //   cardData.categories[0].title === "НЕПРАВДА"
   //     ? "text-red-600"
@@ -47,7 +49,11 @@ export default function Card({ cardData, index }) {
           {locale === "ua" ? cardData.title : cardData.title_ru}
         </Link>
       </h2>
-      <p className="mt-4 text-xs font-bold text-gray-500"># TAG</p>
+      {cardData.tags.map((tag) => (
+        <p key={tag.id} className="mt-4 text-xs tracking-wider uppercase font-medium text-gray-500">
+          # {locale === "ua" ? tag.title : tag.title_ru}
+        </p>
+      ))}
     </motion.div>
   );
 }

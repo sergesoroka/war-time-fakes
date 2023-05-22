@@ -30,8 +30,8 @@ export default function Sidebar({
         <li
           className={
             category === cat.id
-              ? "mb-3 block w-40 select-none bg-indigo-600 px-3  py-1 text-white"
-              : "mb-3 block cursor-pointer select-none px-3 py-1 tracking-wider text-gray-600"
+              ? "lg:mb-3 block w-40 select-none bg-indigo-600 px-3  py-1 text-white"
+              : "lg:mb-3 block cursor-pointer select-none px-3 py-1 tracking-wider text-gray-600"
           }
           onClick={() => {
             setCategory(cat.id);
@@ -92,8 +92,8 @@ export default function Sidebar({
       <li
           className={
             year == 2023 && category == 1
-              ? "mb-3 mt-6 pt-2 mr-6 border-t-2 border-gray-400 block select-none px-3 py-1 tracking-wider text-gray-400"
-              : "mb-3 mt-6 pt-2 mr-6 border-t-2 border-red-600 block cursor-pointer select-none px-3 py-1 tracking-wider text-red-600"
+              ? "mb-3 mt-6 pt-2 lg:mr-6 border-t-2 border-gray-400 block select-none px-3 py-1 tracking-wider text-gray-400"
+              : "mb-3 mt-6 pt-2 lg:mr-6 border-t-2 border-red-600 block cursor-pointer select-none px-3 py-1 tracking-wider text-red-600"
           }
           onClick={() => {
             setCategory(1);
