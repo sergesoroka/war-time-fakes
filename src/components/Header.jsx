@@ -11,7 +11,7 @@ export default function Header({ setResults }) {
 
   return (
     <div className="flex justify-between pr-4 pt-4">
-      <div className="pl-11 pt-2 text-indigo-700">
+      <div className="pl-11 pt-2 text-indigo-700 font-medium">
         <Link href="/">
           VOX<span className="text-gray-700">CHECK</span>
         </Link>

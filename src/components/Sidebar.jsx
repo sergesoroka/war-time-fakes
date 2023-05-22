@@ -22,7 +22,7 @@ export default function Sidebar({
         setData(data);
       });
   }, []);
-  console.log(data);
+
 
   const categoriesList = data.map((cat) => {
     return (
@@ -57,7 +57,7 @@ export default function Sidebar({
 
   return (
     <div>
-      <ul className="mb-8 ml-4 text-[14px] font-bold text-gray-800">
+      <ul className="mb-8 ml-4 text-[14px] font-medium text-gray-800">
         <li
           className={
             year === 2022
@@ -92,15 +92,15 @@ export default function Sidebar({
       <li
           className={
             year == 2023 && category == 1
-              ? "mb-3 mt-6 pt-2 mr-6 border-t-4 border-gray-400 block select-none px-3 py-1 tracking-wider text-gray-400"
-              : "mb-3 mt-6 pt-2 mr-6 border-t-4 border-red-600 block cursor-pointer select-none px-3 py-1 tracking-wider text-red-600"
+              ? "mb-3 mt-6 pt-2 mr-6 border-t-2 border-gray-400 block select-none px-3 py-1 tracking-wider text-gray-400"
+              : "mb-3 mt-6 pt-2 mr-6 border-t-2 border-red-600 block cursor-pointer select-none px-3 py-1 tracking-wider text-red-600"
           }
           onClick={() => {
             setCategory(1);
             setPage(1);
             setYear(2023)
           }}
-        >СКИНУТИ УСІ ФІЛЬТРИ</li>
+        >СКИНУТИ ФІЛЬТРИ</li>
       </ul>
     </div>
   );

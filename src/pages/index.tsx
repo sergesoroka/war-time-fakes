@@ -52,6 +52,7 @@ export default function Home() {
             month={month}
             setMonth={setMonth}
             results={results}
+            year={year}
           />
         </div>
       </div>

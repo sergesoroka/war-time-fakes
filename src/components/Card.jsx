@@ -32,7 +32,7 @@ export default function Card({ cardData, index }) {
     >
       <p className="text-xs text-gray-500">
         <span
-          className={`mr-4 text-sm font-bold tracking-wider text-amber-400`}
+          className={`mr-4 text-sm font-bold tracking-wider text-indigo-800`}
         >
           {cardData.categories.map((cat) => (
             <span key={cat.id}>
