@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import useMeasure from "react-use-measure";
 
 export default function Home() {
-  let [ref, bounds] = useMeasure();
+  const [ref, bounds] = useMeasure();
   const [year, setYear] = useState(2023);
   const [month, setMonth] = useState(1);
 

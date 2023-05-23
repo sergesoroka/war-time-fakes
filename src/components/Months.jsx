@@ -30,7 +30,7 @@ export default function Months({ setMonth, month, setPage }) {
           key={monthItem.id}
           onClick={() => {
             setMonth(monthItem.id);
-            setPage(0);
+            setPage(1);
           }}
         >
           {locale === "ua" ? monthItem.monthUk : monthItem.monthRu}
