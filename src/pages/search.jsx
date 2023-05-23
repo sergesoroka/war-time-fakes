@@ -13,6 +13,7 @@ function Search() {
   const { locale } = router;
 
   const titleLang = locale === "ua" ? "title" : "title_ru";
+  const contentLang = locale === "ua" ? "content" : "content_ru";
   const placeholder = locale === "ua" ? "ПОШУК ФЕЙКІВ" : "ПОИСК ФЕЙКОВ";
 
   console.log(input);
@@ -26,9 +27,11 @@ function Search() {
         .then((json) => {
           const results = json.data.filter((item) => {
             return (
-              item &&
-              item[titleLang] &&
-              item[titleLang].toLowerCase().includes(input)
+              (item &&
+                item[titleLang] &&
+                item[titleLang].toLowerCase().includes(input)) ||
+              (item[contentLang] &&
+                item[contentLang].toLowerCase().includes(input))
             );
           });
           setResults(results);
@@ -75,7 +78,6 @@ function Search() {
             <span className="ml-1 mr-2">
               {locale === "ua" ? "Завантажити ще" : "Загрузить еще"}
             </span>
-         
           </button>
         </div>
       )}
