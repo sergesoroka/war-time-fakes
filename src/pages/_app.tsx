@@ -1,10 +1,12 @@
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
-import Head from 'next/head'
+import "@/styles/globals.css";
+import type { AppProps } from "next/app";
+import Head from "next/head";
+import { ThemeProvider } from "next-themes";
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <>
-  <Head>
+  return (
+    <>
+      <Head>
         <title>War Time Fakes</title>
         <meta name="next-head-count" content="3" />
         <meta name="description" content="War Time Fakes" />
@@ -14,5 +16,9 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-  <Component {...pageProps} /></>
+      <ThemeProvider attribute="class">
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </>
+  );
 }

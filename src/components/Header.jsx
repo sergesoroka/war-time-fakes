@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
 import SearchBar from "../components/SearchBar";
 import Link from "next/link";
+import { useTheme } from "next-themes";
+import { useEffect } from "react";
 
 export default function Header({ setResults }) {
   const router = useRouter();
@@ -9,11 +11,21 @@ export default function Header({ setResults }) {
   const lang = locale === "ua" ? "ru" : "ua";
   const homepage = locale === "ua" ? "НА ГОЛОВНУ" : "НА ГЛАВНУЮ";
 
+  const { systemTheme, theme, setTheme } = useTheme();
+  const currentTheme = theme === "system" ? systemTheme : theme;
+
+    const themeName =
+     locale == "ua" ? "ЗМИНИТИ ТЕМУ" : "СМЕНИТЬ ТЕМУ";
+
+
   return (
-    <div className="flex justify-between items-center pr-4 pt-4">
-      <div className="pl-11 text-indigo-700 font-medium">
+    <div className="flex items-center justify-between pr-4 pt-4">
+      <div className="pl-11 font-medium text-indigo-700">
         <Link href="/">
-          VOX<span className="text-gray-700">CHECK</span>
+          VOX
+          <span className="text-gray-700 dark:text-gray-200 dark:opacity-90">
+            CHECK
+          </span>
         </Link>
       </div>
       <div>
@@ -47,12 +59,20 @@ export default function Header({ setResults }) {
         )}
 
         <p
-          className="cursor-pointer pr-2 text-[13px] font-medium text-indigo-700"
+          className="cursor-pointer select-none pr-2 text-[13px] font-medium text-indigo-700 dark:text-gray-200 dark:opacity-90"
           onClick={() =>
             router.push({ pathname, query }, asPath, { locale: lang })
           }
         >
           {locale === "ua" ? "РОСІЙСЬКА" : "УКРАИНСКИЙ"}
+        </p>
+        <p
+          className="ml-4 select-none cursor-pointer pr-2 text-[13px] font-medium text-indigo-700 dark:text-indigo-100"
+          onClick={() =>
+            theme == "dark" ? setTheme("light") : setTheme("dark")
+          }
+        >
+          {themeName}
         </p>
       </div>
     </div>

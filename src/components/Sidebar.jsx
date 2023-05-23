@@ -30,8 +30,8 @@ export default function Sidebar({
         <li
           className={
             category === cat.id
-              ? "lg:mb-3 block w-40 select-none bg-indigo-600 px-3  py-1 text-white"
-              : "lg:mb-3 block cursor-pointer select-none px-3 py-1 tracking-wider text-gray-600"
+              ? "lg:mb-3 block w-40 select-none bg-indigo-600 px-3 py-1 text-white "
+              : "lg:mb-3 block cursor-pointer select-none px-3 py-1 tracking-wider text-gray-600 dark:text-gray-200 dark:opacity-90"
           }
           onClick={() => {
             setCategory(cat.id);
@@ -62,7 +62,7 @@ export default function Sidebar({
           className={
             year === 2022
               ? "mt-1 select-none border-l-4 border-indigo-600 py-1 pl-2 tracking-wider text-indigo-600"
-              : "mt-1 cursor-pointer select-none py-1 pl-3 tracking-wider transition duration-75 ease-out"
+              : "mt-1 cursor-pointer select-none py-1 pl-3 tracking-wider dark:text-gray-200 dark:opacity-90 transition duration-75 ease-out"
           }
           onClick={() => {
             setYear(2022);
@@ -75,7 +75,7 @@ export default function Sidebar({
           className={
             year === 2023
               ? "mt-1 select-none border-l-4 border-indigo-600 py-1 pl-2 tracking-wider text-indigo-600"
-              : "mt-1 cursor-pointer select-none py-1 pl-3 tracking-wider"
+              : "mt-1 cursor-pointer select-none py-1 pl-3 tracking-wider dark:text-gray-200 dark:opacity-90"
           }
           onClick={() => {
             setYear(2023);

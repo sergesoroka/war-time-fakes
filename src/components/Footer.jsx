@@ -10,7 +10,7 @@ export default function Footer() {
       <div className="">
         © 2023 <span className="text-indigo-600">VoxUkraine</span>
       </div>
-      <div className="text-indigo-600 hover:text-indigo-700">
+      <div className="text-indigo-600 hover:text-indigo-700 dark:text-gray-200 dark:opacity-90">
         <Link href="/about">
           {locale === "ua" ? "Про проект" : "О проекте"}
         </Link>
