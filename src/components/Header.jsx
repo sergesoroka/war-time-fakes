@@ -19,8 +19,8 @@ export default function Header({ setResults }) {
 
 
   return (
-    <div className="flex items-center justify-between pr-4 pt-4">
-      <div className="pl-11 font-medium text-indigo-700">
+    <div className="flex items-center justify-between pr-2 pt-4">
+      <div className="pl-8 font-medium text-indigo-700">
         <Link href="/">
           VOX
           <span className="text-gray-700 dark:text-gray-200 dark:opacity-90">
@@ -33,7 +33,7 @@ export default function Header({ setResults }) {
       </div>
       <div className="flex">
         {pathname == "/search" ? (
-          <p className="mr-4 cursor-pointer pr-2 text-[13px] font-medium text-indigo-700">
+          <p className="mr-2 cursor-pointer pr-2 text-[13px] font-medium text-indigo-700">
             <Link href="/">{homepage}</Link>
           </p>
         ) : (
@@ -67,7 +67,7 @@ export default function Header({ setResults }) {
           {locale === "ua" ? "РОСІЙСЬКА" : "УКРАИНСКИЙ"}
         </p>
         <p
-          className="ml-4 select-none cursor-pointer pr-2 text-[13px] font-medium text-indigo-700 dark:text-indigo-100"
+          className="ml-2 select-none cursor-pointer pr-2 text-[13px] font-medium text-indigo-700 dark:text-indigo-100"
           onClick={() =>
             theme == "dark" ? setTheme("light") : setTheme("dark")
           }
