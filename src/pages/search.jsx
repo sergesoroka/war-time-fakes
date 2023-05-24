@@ -39,7 +39,7 @@ function Search() {
     } else {
       setResults([]);
     }
-  }, [page, input, titleLang]);
+  }, [page, input, titleLang, contentLang]);
 
   const handleChange = (value) => {
     setInput(value);

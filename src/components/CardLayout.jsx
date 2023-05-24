@@ -24,7 +24,7 @@ export default function CardLayout({
         <Months setMonth={setMonth} month={month} setPage={setPage} />
       </div>
 
-      <div className="my-8 ml-2 h-60 items-center px-4 text-blue-500" ref={ref}>
+      {/* <div className="my-8 ml-2 h-60 items-center px-4 text-blue-500" ref={ref}>
         <Chart
           width={bounds.width}
           hight={bounds.height}
@@ -32,10 +32,8 @@ export default function CardLayout({
           year={year}
           month={month}
         />
-      </div>
-      {data && data.data.length < 1 && (
-        <div className="flex justify-center text-indigo-700">Немає даних</div>
-      )}
+      </div> */}
+     
 
       <div className="grid  gap-2 sm:grid-cols-1 lg:grid-cols-3">
         {results.length < 1 &&
@@ -64,7 +62,10 @@ export default function CardLayout({
             );
           })}
       </div>
-      {(data && data.data.length > 5) && (
+      {data && data.data.length < 1 && (
+        <div className="flex justify-center  font-medium uppercase text-indigo-700 dark:text-gray-200">{year}, {month} {locale == 'ua' ? ' немає даних' : ' нет данных'}</div>
+      )}
+      {/* {(data && data.data.length > 5) && (
         <div className="mt-6 flex items-center lg:justify-center">
           <button
             className={` ${
@@ -125,7 +126,7 @@ export default function CardLayout({
             </button>
           )}
         </div>
-      )}
+      )} */}
     </div>
   );
 }

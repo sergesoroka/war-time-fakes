@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import SearchBar from "../components/SearchBar";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import { useEffect } from "react";
+import { useState } from "react";
 
 export default function Header({ setResults }) {
   const router = useRouter();
@@ -14,9 +14,8 @@ export default function Header({ setResults }) {
   const { systemTheme, theme, setTheme } = useTheme();
   const currentTheme = theme === "system" ? systemTheme : theme;
 
-    const themeName =
-     locale == "ua" ? "ЗМИНИТИ ТЕМУ" : "СМЕНИТЬ ТЕМУ";
-
+  const themeName = locale == "ua" ? "ЗМИНИТИ ТЕМУ" : "СМЕНИТЬ ТЕМУ";
+  const [nightIcon, setNightIcon] = useState(false);
 
   return (
     <div className="flex items-center justify-between pr-2 pt-4">
@@ -31,7 +30,7 @@ export default function Header({ setResults }) {
       <div>
         {/* <SearchBar setResults={setResults} placeholder={placeholder} /> */}
       </div>
-      <div className="flex">
+      <div className="flex items-center">
         {pathname == "/search" ? (
           <p className="mr-2 cursor-pointer pr-2 text-[13px] font-medium text-indigo-700">
             <Link href="/">{homepage}</Link>
@@ -67,12 +66,139 @@ export default function Header({ setResults }) {
           {locale === "ua" ? "РОСІЙСЬКА" : "УКРАИНСКИЙ"}
         </p>
         <p
-          className="ml-2 select-none cursor-pointer pr-2 text-[13px] font-medium text-indigo-700 dark:text-indigo-100"
+          className="ml-2 cursor-pointer select-none pr-2 text-[13px] font-medium text-indigo-700 dark:text-indigo-100"
           onClick={() =>
             theme == "dark" ? setTheme("light") : setTheme("dark")
           }
         >
-          {themeName}
+          {nightIcon ? (
+            <svg
+              onClick={() => setNightIcon(!nightIcon)}
+              width="34"
+              height="42"
+              viewBox="0 0 34 42"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M24.4044 16L8.94912 16C9.02151 11.794 12.4536 8.40679 16.6768 8.40679C20.9 8.40679 24.332 11.794 24.4044 16Z"
+                fill="#D9D9D9"
+                fill-opacity="0.2"
+              />
+              <rect
+                x="16.2712"
+                width="1.82301"
+                height="7.32203"
+                rx="0.911503"
+                fill="#D9D9D9"
+                fill-opacity="0.2"
+              />
+              <rect
+                y="16"
+                width="1.82301"
+                height="7.32203"
+                rx="0.911503"
+                transform="rotate(-90 0 16)"
+                fill="#D9D9D9"
+                fill-opacity="0.2"
+              />
+              <rect
+                width="1.82301"
+                height="7.32203"
+                rx="0.911503"
+                transform="matrix(0 -1 -1 0 33.6055 16)"
+                fill="#D9D9D9"
+                fill-opacity="0.2"
+              />
+              <rect
+                x="4.33899"
+                y="5.10608"
+                width="1.82301"
+                height="7.32203"
+                rx="0.911503"
+                transform="rotate(-45 4.33899 5.10608)"
+                fill="#D9D9D9"
+                fill-opacity="0.2"
+              />
+              <rect
+                width="1.82301"
+                height="7.32203"
+                rx="0.911503"
+                transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 29.2665 5.10608)"
+                fill="#D9D9D9"
+                fill-opacity="0.2"
+              />
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M24.8352 38.5358C24.1133 38.7448 23.3502 38.8569 22.561 38.8569C18.054 38.8569 14.4004 35.2032 14.4004 30.6963C14.4004 28.948 14.9502 27.328 15.8864 26C12.486 26.9847 10 30.1217 10 33.8394C10 38.3464 13.6536 42 18.1606 42C20.9192 42 23.3581 40.6312 24.8352 38.5358Z"
+                fill="#D9D9D9"
+              />
+            </svg>
+          ) : (
+            <svg
+              onClick={() => setNightIcon(!nightIcon)}
+              width="34"
+              height="42"
+              viewBox="0 0 34 42"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M24.4044 16L8.94912 16C9.02151 11.794 12.4536 8.40679 16.6768 8.40679C20.9 8.40679 24.332 11.794 24.4044 16Z"
+                fill="#F9D20A"
+              />
+              <rect
+                x="16.2712"
+                width="1.82301"
+                height="7.32203"
+                rx="0.911503"
+                fill="#F9D20A"
+              />
+              <rect
+                y="16"
+                width="1.82301"
+                height="7.32203"
+                rx="0.911503"
+                transform="rotate(-90 0 16)"
+                fill="#F9D20A"
+              />
+              <rect
+                width="1.82301"
+                height="7.32203"
+                rx="0.911503"
+                transform="matrix(0 -1 -1 0 33.6055 16)"
+                fill="#F9D20A"
+              />
+              <rect
+                x="4.33899"
+                y="5.10608"
+                width="1.82301"
+                height="7.32203"
+                rx="0.911503"
+                transform="rotate(-45 4.33899 5.10608)"
+                fill="#F9D20A"
+              />
+              <rect
+                width="1.82301"
+                height="7.32203"
+                rx="0.911503"
+                transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 29.2665 5.10608)"
+                fill="#F9D20A"
+              />
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M24.8352 38.5358C24.1133 38.7448 23.3502 38.8569 22.561 38.8569C18.054 38.8569 14.4004 35.2032 14.4004 30.6963C14.4004 28.948 14.9502 27.328 15.8864 26C12.486 26.9847 10 30.1217 10 33.8394C10 38.3464 13.6536 42 18.1606 42C20.9192 42 23.3581 40.6312 24.8352 38.5358Z"
+                fill="#8F93FF"
+                fill-opacity="0.4"
+              />
+            </svg>
+          )}
         </p>
       </div>
     </div>

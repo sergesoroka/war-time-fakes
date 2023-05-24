@@ -22,7 +22,7 @@ export default function Home() {
 
   useEffect(() => {
     fetch(
-      `https://vox-dashboard.ra-devs.tech/api/wpposts?page=${page}${yearPlaceholder}&month=${month}&category=${category}`
+      `https://vox-dashboard.ra-devs.tech/api/wpposts?per_page=80${yearPlaceholder}&month=${month}&category=${category}`
     )
       .then((res) => res.json())
       .then((data) => {
