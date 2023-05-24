@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
-import SearchBar from "../components/SearchBar";
+
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Header({ setResults }) {
   const router = useRouter();
@@ -14,8 +14,18 @@ export default function Header({ setResults }) {
   const { systemTheme, theme, setTheme } = useTheme();
   const currentTheme = theme === "system" ? systemTheme : theme;
 
-  const themeName = locale == "ua" ? "ЗМИНИТИ ТЕМУ" : "СМЕНИТЬ ТЕМУ";
   const [nightIcon, setNightIcon] = useState(false);
+
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return null
+  }
+
 
   return (
     <div className="flex items-center justify-between pr-2 pt-4">
@@ -27,9 +37,7 @@ export default function Header({ setResults }) {
           </span>
         </Link>
       </div>
-      <div>
-        {/* <SearchBar setResults={setResults} placeholder={placeholder} /> */}
-      </div>
+      <div></div>
       <div className="flex items-center">
         {pathname == "/search" ? (
           <p className="mr-2 cursor-pointer pr-2 text-[13px] font-medium text-indigo-700">
@@ -71,29 +79,28 @@ export default function Header({ setResults }) {
             theme == "dark" ? setTheme("light") : setTheme("dark")
           }
         >
-          {nightIcon ? (
+          
+          {currentTheme === 'light' ? (
             <svg
               onClick={() => setNightIcon(!nightIcon)}
-              width="34"
-              height="42"
-              viewBox="0 0 34 42"
+              width="60"
+              height="16"
+              viewBox="0 0 60 16"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 fill-rule="evenodd"
                 clip-rule="evenodd"
-                d="M24.4044 16L8.94912 16C9.02151 11.794 12.4536 8.40679 16.6768 8.40679C20.9 8.40679 24.332 11.794 24.4044 16Z"
-                fill="#D9D9D9"
-                fill-opacity="0.2"
+                d="M24.4045 16H8.94916C9.02154 11.794 12.4536 8.4068 16.6768 8.4068C20.9 8.4068 24.3321 11.794 24.4045 16Z"
+                fill="#F9D20A"
               />
               <rect
                 x="16.2712"
                 width="1.82301"
                 height="7.32203"
                 rx="0.911503"
-                fill="#D9D9D9"
-                fill-opacity="0.2"
+                fill="#F9D20A"
               />
               <rect
                 y="16"
@@ -101,16 +108,14 @@ export default function Header({ setResults }) {
                 height="7.32203"
                 rx="0.911503"
                 transform="rotate(-90 0 16)"
-                fill="#D9D9D9"
-                fill-opacity="0.2"
+                fill="#F9D20A"
               />
               <rect
                 width="1.82301"
                 height="7.32203"
                 rx="0.911503"
                 transform="matrix(0 -1 -1 0 33.6055 16)"
-                fill="#D9D9D9"
-                fill-opacity="0.2"
+                fill="#F9D20A"
               />
               <rect
                 x="4.33899"
@@ -119,30 +124,29 @@ export default function Header({ setResults }) {
                 height="7.32203"
                 rx="0.911503"
                 transform="rotate(-45 4.33899 5.10608)"
-                fill="#D9D9D9"
-                fill-opacity="0.2"
+                fill="#F9D20A"
               />
               <rect
                 width="1.82301"
                 height="7.32203"
                 rx="0.911503"
                 transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 29.2665 5.10608)"
-                fill="#D9D9D9"
-                fill-opacity="0.2"
+                fill="#F9D20A"
               />
               <path
                 fill-rule="evenodd"
                 clip-rule="evenodd"
-                d="M24.8352 38.5358C24.1133 38.7448 23.3502 38.8569 22.561 38.8569C18.054 38.8569 14.4004 35.2032 14.4004 30.6963C14.4004 28.948 14.9502 27.328 15.8864 26C12.486 26.9847 10 30.1217 10 33.8394C10 38.3464 13.6536 42 18.1606 42C20.9192 42 23.3581 40.6312 24.8352 38.5358Z"
-                fill="#D9D9D9"
+                d="M59.8352 12.5358C59.1133 12.7448 58.3502 12.8569 57.561 12.8569C53.054 12.8569 49.4004 9.20327 49.4004 4.69632C49.4004 2.94798 49.9502 1.32805 50.8864 0C47.486 0.984696 45 4.12176 45 7.83947C45 12.3464 48.6536 16 53.1606 16C55.9192 16 58.3581 14.6312 59.8352 12.5358Z"
+                fill="#8F93FF"
+                fill-opacity="0.4"
               />
             </svg>
           ) : (
             <svg
               onClick={() => setNightIcon(!nightIcon)}
-              width="34"
-              height="42"
-              viewBox="0 0 34 42"
+              width="60"
+              height="16"
+              viewBox="0 0 60 16"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -150,14 +154,16 @@ export default function Header({ setResults }) {
                 fill-rule="evenodd"
                 clip-rule="evenodd"
                 d="M24.4044 16L8.94912 16C9.02151 11.794 12.4536 8.40679 16.6768 8.40679C20.9 8.40679 24.332 11.794 24.4044 16Z"
-                fill="#F9D20A"
+                fill="#D9D9D9"
+                fill-opacity="0.2"
               />
               <rect
                 x="16.2712"
                 width="1.82301"
                 height="7.32203"
                 rx="0.911503"
-                fill="#F9D20A"
+                fill="#D9D9D9"
+                fill-opacity="0.2"
               />
               <rect
                 y="16"
@@ -165,14 +171,16 @@ export default function Header({ setResults }) {
                 height="7.32203"
                 rx="0.911503"
                 transform="rotate(-90 0 16)"
-                fill="#F9D20A"
+                fill="#D9D9D9"
+                fill-opacity="0.2"
               />
               <rect
                 width="1.82301"
                 height="7.32203"
                 rx="0.911503"
                 transform="matrix(0 -1 -1 0 33.6055 16)"
-                fill="#F9D20A"
+                fill="#D9D9D9"
+                fill-opacity="0.2"
               />
               <rect
                 x="4.33899"
@@ -181,21 +189,22 @@ export default function Header({ setResults }) {
                 height="7.32203"
                 rx="0.911503"
                 transform="rotate(-45 4.33899 5.10608)"
-                fill="#F9D20A"
+                fill="#D9D9D9"
+                fill-opacity="0.2"
               />
               <rect
                 width="1.82301"
                 height="7.32203"
                 rx="0.911503"
                 transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 29.2665 5.10608)"
-                fill="#F9D20A"
+                fill="#D9D9D9"
+                fill-opacity="0.2"
               />
               <path
                 fill-rule="evenodd"
                 clip-rule="evenodd"
-                d="M24.8352 38.5358C24.1133 38.7448 23.3502 38.8569 22.561 38.8569C18.054 38.8569 14.4004 35.2032 14.4004 30.6963C14.4004 28.948 14.9502 27.328 15.8864 26C12.486 26.9847 10 30.1217 10 33.8394C10 38.3464 13.6536 42 18.1606 42C20.9192 42 23.3581 40.6312 24.8352 38.5358Z"
-                fill="#8F93FF"
-                fill-opacity="0.4"
+                d="M59.8352 12.5358C59.1133 12.7448 58.3502 12.8569 57.561 12.8569C53.054 12.8569 49.4004 9.20325 49.4004 4.6963C49.4004 2.94796 49.9502 1.32803 50.8864 -2.20942e-05C47.486 0.984674 45 4.12174 45 7.83945C45 12.3464 48.6536 16 53.1606 16C55.9192 16 58.3581 14.6312 59.8352 12.5358Z"
+                fill="#D9D9D9"
               />
             </svg>
           )}
