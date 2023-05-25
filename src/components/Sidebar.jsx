@@ -23,22 +23,21 @@ export default function Sidebar({
       });
   }, []);
 
-
   const categoriesList = data.map((cat) => {
     return (
       <div key={cat.id} className="flex justify-start">
         <li
           className={
             category === cat.id
-              ? "lg:mb-3 block w-40 select-none bg-indigo-600 px-3 py-1 text-white "
-              : "lg:mb-3 block cursor-pointer select-none px-3 py-1 tracking-wider text-gray-600 dark:text-gray-200 dark:opacity-90"
+              ? "block w-40 select-none bg-indigo-600 px-3 py-1 text-white lg:mb-3 "
+              : "block cursor-pointer select-none px-3 py-1 tracking-wider text-gray-600 dark:text-gray-200 dark:opacity-90 lg:mb-3"
           }
           onClick={() => {
             setCategory(cat.id);
             setPage(1);
           }}
         >
-          {locale == 'ua' ? cat.title : cat.title_ru}
+          {locale == "ua" ? cat.title : cat.title_ru}
         </li>
         {category === cat.id && (
           <svg
@@ -62,7 +61,7 @@ export default function Sidebar({
           className={
             year === 2022
               ? "mt-1 select-none border-l-4 border-indigo-600 py-1 pl-2 tracking-wider text-indigo-600"
-              : "mt-1 cursor-pointer select-none py-1 pl-3 tracking-wider dark:text-gray-200 dark:opacity-90 transition duration-75 ease-out"
+              : "mt-1 cursor-pointer select-none py-1 pl-3 tracking-wider transition duration-75 ease-out dark:text-gray-200 dark:opacity-90"
           }
           onClick={() => {
             setYear(2022);
@@ -89,18 +88,20 @@ export default function Sidebar({
         {categoriesList}
       </ul>
       <ul className="ml-4 text-[14px] font-bold">
-      <li
+        <button
           className={
             year == 2023 && category == 1
-              ? "mb-3 mt-6 pt-2 lg:mr-6 border-t-2 border-gray-400 block select-none px-3 py-1 tracking-wider text-gray-400"
-              : "mb-3 mt-6 pt-2 lg:mr-6 border-t-2 border-red-600 block cursor-pointer select-none px-3 py-1 tracking-wider text-red-600"
+              ? "mb-4 mr-2 uppercase mt-6 select-none rounded-full  border border-solid border-indigo-600 px-3 py-1 text-[9px] font-medium  tracking-wider text-indigo-700  dark:text-gray-200 lg:text-[12px]"
+              : "mb-4 mr-2 uppercase mt-6 select-none rounded-full border border-solid border-indigo-600 bg-indigo-600 px-3 py-1 text-[9px] font-medium  tracking-wider text-white lg:text-[12px]"
           }
           onClick={() => {
             setCategory(1);
             setPage(1);
-            setYear(2023)
+            setYear(2023);
           }}
-        >СКИНУТИ ФІЛЬТРИ</li>
+        >
+          {locale == 'ua' ? 'Скинути фільтри' : 'Сбросить фильтры'}
+        </button>
       </ul>
     </div>
   );
