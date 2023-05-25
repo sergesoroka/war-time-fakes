@@ -8,7 +8,7 @@ export default function Sidebar({
   setYear,
   category,
   setCategory,
-  setPage,
+  setMonth,
 }) {
   const router = useRouter();
   const { locale } = router;
@@ -34,7 +34,6 @@ export default function Sidebar({
           }
           onClick={() => {
             setCategory(cat.id);
-            setPage(1);
           }}
         >
           {locale == "ua" ? cat.title : cat.title_ru}
@@ -65,7 +64,6 @@ export default function Sidebar({
           }
           onClick={() => {
             setYear(2022);
-            setPage(1);
           }}
         >
           2022
@@ -78,7 +76,6 @@ export default function Sidebar({
           }
           onClick={() => {
             setYear(2023);
-            setPage(1);
           }}
         >
           2023
@@ -91,16 +88,16 @@ export default function Sidebar({
         <button
           className={
             year == 2023 && category == 1
-              ? "mb-4 mr-2 uppercase mt-6 select-none rounded-full  border border-solid border-indigo-600 px-3 py-1 text-[9px] font-medium  tracking-wider text-indigo-700  dark:text-gray-200 lg:text-[12px]"
-              : "mb-4 mr-2 uppercase mt-6 select-none rounded-full border border-solid border-indigo-600 bg-indigo-600 px-3 py-1 text-[9px] font-medium  tracking-wider text-white lg:text-[12px]"
+              ? "mb-4 mr-2 mt-6 select-none rounded-full border  border-solid border-indigo-600 px-3 py-1 text-[9px] font-medium uppercase  tracking-wider text-indigo-700  dark:text-gray-200 lg:text-[12px]"
+              : "mb-4 mr-2 mt-6 select-none rounded-full border border-solid border-indigo-600 bg-indigo-600 px-3 py-1 text-[9px] font-medium uppercase  tracking-wider text-white lg:text-[12px]"
           }
           onClick={() => {
             setCategory(1);
-            setPage(1);
+            setMonth(1);
             setYear(2023);
           }}
         >
-          {locale == 'ua' ? 'Скинути фільтри' : 'Сбросить фильтры'}
+          {locale == "ua" ? "Скинути фільтри" : "Сбросить фильтры"}
         </button>
       </ul>
     </div>

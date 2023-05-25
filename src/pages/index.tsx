@@ -41,7 +41,7 @@ export default function Home() {
             setYear={setYear}
             category={category}
             setCategory={setCategory}
-            setPage={setPage}
+            setMonth={setMonth}
           />
         </div>
         <div className="w-5/6">
