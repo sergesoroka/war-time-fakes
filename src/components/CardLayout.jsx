@@ -4,20 +4,24 @@ import Months from "./Months";
 import Chart from "./Chart";
 import useMeasure from "react-use-measure";
 
+import { months } from "../utills/monthNames";
+
 export default function CardLayout({
   data,
   page,
   setPage,
   month,
   setMonth,
+  setCategory,
+  setYear,
+  category,
   results,
   year,
 }) {
   let [ref, bounds] = useMeasure();
   const router = useRouter();
   const { locale } = router;
-
-
+  const monthLang = locale == "ua" ? "monthUk" : "monthRu";
   return (
     <div className="flex flex-col justify-center">
       <div className="my-8 items-center pl-6 pr-2 text-blue-500" ref={ref}>
@@ -33,7 +37,6 @@ export default function CardLayout({
           month={month}
         />
       </div> */}
-     
 
       <div className="grid  gap-2 sm:grid-cols-1 lg:grid-cols-3">
         {results.length < 1 &&
@@ -63,70 +66,29 @@ export default function CardLayout({
           })}
       </div>
       {data && data.data.length < 1 && (
-        <div className="flex justify-center  font-medium uppercase text-indigo-700 dark:text-gray-200">{year}, {month} {locale == 'ua' ? ' немає даних' : ' нет данных'}</div>
-      )}
-      {/* {(data && data.data.length > 5) && (
-        <div className="mt-6 flex items-center lg:justify-center">
-          <button
-            className={` ${
-              page < 2 && "invisible"
-            } m-4 flex items-center justify-between rounded-full border-2 border-solid border-indigo-600 bg-indigo-600 px-2 lg:px-4 py-1 lg:py-2 text-[11px] lg:text-xs font-bold uppercase tracking-wider text-white hover:border-indigo-500 hover:bg-indigo-500`}
-            onClick={() => setPage(page - 1)}
-          >
-            <svg
-              width="10"
-              height="17"
-              viewBox="0 0 10 17"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M10.0001 1.50001L8.50005 0L1.50005 7L1.50001 6.99995L0 8.49996L4.53289e-05 8.50001L7.68805e-06 8.50004L1.50002 10.0001L1.50005 10L8.50004 17L10.0001 15.5L3.00006 8.50001L10.0001 1.50001Z"
-                fill="white"
-                fillOpacity="0.9"
-              />
-            </svg>
-
-            <span className="ml-2 mr-1">
-              {locale === "ua" ? "Попередня" : "Предыдущая"}
-            </span>
-          </button>
-
-          <p className="w-40 text-center font-medium text-indigo-500">
-            <span className="text-[16px] hidden lg:inline-block ">
-              {locale === "ua" ? "Сторінка:" : "Страница:"}
-            </span>
-            <span className="ml-2 w-4">{page}</span>
-          </p>
-          {data && !data.data.length < 1 && (
-            <button
-              className="m-4 flex items-center justify-between rounded-full border-2 border-solid border-indigo-600 bg-indigo-600 px-2 lg:px-4 py-1 lg:py-2 text-[11px] lg:text-xs font-bold uppercase tracking-wider text-white hover:border-indigo-500 hover:bg-indigo-500"
-              onClick={() => setPage(page + 1)}
-            >
-              <span className="ml-1 mr-2">
-                {locale === "ua" ? "Наступна" : "Следующая"}
-              </span>
-              <svg
-                width="10"
-                height="17"
-                viewBox="0 0 10 17"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M9.53674e-07 1.50001L1.50001 0L8.50001 7L8.50005 6.99995L10.0001 8.49996L10 8.50001L10.0001 8.50004L8.50005 10.0001L8.50001 10L1.50002 17L8.58307e-06 15.5L7 8.50001L9.53674e-07 1.50001Z"
-                  fill="white"
-                  fillOpacity="0.9"
-                />
-              </svg>
-            </button>
-          )}
+        <div className="flex justify-center  font-medium uppercase text-indigo-700 dark:text-gray-200">
+          {locale == "ua" ? " немає даних" : " нет данных"} за{" "}
+          {months.map((m) => m.id == month && m[monthLang])} {year}
         </div>
-      )} */}
+      )}
+      {(year != 2023 || category != 1 || month != 1) && (
+        <div className="flex justify-center">
+          <button
+            className={
+              year == 2023 && category == 1
+                ? " mb-4 mr-2 mt-4 cursor-pointer select-none rounded-full  border border-solid border-indigo-600 px-4 py-2 text-[9px] font-medium uppercase  tracking-wider text-gray-700 hover:border-indigo-500 hover:bg-indigo-500 hover:text-white dark:text-gray-200 lg:text-[12px]"
+                : " mb-4 mr-2 mt-4 select-none rounded-full border border-solid border-indigo-600 bg-indigo-600 px-4 py-2 text-[9px] font-medium uppercase  tracking-wider text-white lg:text-[12px]"
+            }
+            onClick={() => {
+              setCategory(1);
+              setMonth(1);
+              setYear(2023);
+            }}
+          >
+            {locale == "ua" ? "Скинути фільтри" : "Сбросить фильтры"}
+          </button>
+        </div>
+      )}
     </div>
   );
 }

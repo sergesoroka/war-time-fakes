@@ -84,7 +84,7 @@ export default function Sidebar({
       <ul className="ml-4 text-[14px] font-medium text-gray-800">
         {categoriesList}
       </ul>
-      <ul className="ml-4 text-[14px] font-bold">
+      {/* <ul className="ml-4 text-[14px] font-bold">
         <button
           className={
             year == 2023 && category == 1
@@ -99,7 +99,7 @@ export default function Sidebar({
         >
           {locale == "ua" ? "Скинути фільтри" : "Сбросить фильтры"}
         </button>
-      </ul>
+      </ul> */}
     </div>
   );
 }
