@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import Card from "./Card";
 import Months from "./Months";
-import Chart from "./Chart";
+import Spinner from "../components/Spinner/Spinner";
 import useMeasure from "react-use-measure";
 
 import { months } from "../utills/monthNames";
@@ -28,15 +28,7 @@ export default function CardLayout({
         <Months setMonth={setMonth} month={month} setPage={setPage} />
       </div>
 
-      {/* <div className="my-8 ml-2 h-60 items-center px-4 text-blue-500" ref={ref}>
-        <Chart
-          width={bounds.width}
-          hight={bounds.height}
-          data={data}
-          year={year}
-          month={month}
-        />
-      </div> */}
+      {/* {(data && data.data.length < 1) && <Spinner />} */}
 
       <div className="grid  gap-2 sm:grid-cols-1 lg:grid-cols-3">
         {results.length < 1 &&

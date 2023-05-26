@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 import Header from "../../components/Header";
 import Card from "../../components/Card";
+import Spinner from "../../components/Spinner/Spinner";
 
 export default function Tag() {
   const router = useRouter();
@@ -10,7 +11,7 @@ export default function Tag() {
 
   const tagName = router.query.id;
 
-  const taglang = locale === "ua" ? 'title' : 'title_ru';
+  const taglang = locale === "ua" ? "title" : "title_ru";
 
   const [results, setResults] = useState([]);
   useEffect(() => {
@@ -24,14 +25,14 @@ export default function Tag() {
       });
   }, []);
 
-  console.log(results);
-
   return (
     <div className="w-full">
       <Header />
-      <div className="m-8 uppercase ml-10 flex flex-col justify-center text-base">
+      <div className="m-8 ml-10 flex flex-col justify-center text-base uppercase">
         # {tagName}
       </div>
+
+      {results.length < 1 && <Spinner />}
 
       <div className="mx-10 grid gap-2 sm:grid-cols-1 lg:grid-cols-3">
         {results.length > 0 &&
