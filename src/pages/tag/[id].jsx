@@ -6,9 +6,11 @@ import Card from "../../components/Card";
 
 export default function Tag() {
   const router = useRouter();
-  const { path } = router;
+  const { locale } = router;
 
   const tagName = router.query.id;
+
+  const taglang = locale === "ua" ? 'title' : 'title_ru';
 
   const [results, setResults] = useState([]);
   useEffect(() => {
@@ -25,14 +27,14 @@ export default function Tag() {
   return (
     <div className="w-full">
       <Header />
-      <div className="m-8 ml-10 flex flex-col justify-center text-lg">
+      <div className="m-8 uppercase ml-10 flex flex-col justify-center text-base">
         # {tagName}
       </div>
 
       <div className="mx-10 grid gap-2 sm:grid-cols-1 lg:grid-cols-3">
         {results.length > 0 &&
           results.map((item, i) => {
-            let tags = item.tags.map((tag) => tag.title);
+            let tags = item.tags.map((tag) => tag[taglang]);
             if (tags.includes(tagName)) {
               return (
                 <Card
