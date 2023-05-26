@@ -14,7 +14,7 @@ export default function Tag() {
 
   const [results, setResults] = useState([]);
   useEffect(() => {
-    fetch(`https://vox-dashboard.ra-devs.tech/api/wpposts?per_page=80`)
+    fetch(`https://vox-dashboard.ra-devs.tech/api/wpposts?per_page=1500`)
       .then((response) => response.json())
       .then((json) => {
         const results = json.data.filter((item) => {
@@ -23,6 +23,8 @@ export default function Tag() {
         setResults(results);
       });
   }, []);
+
+  console.log(results);
 
   return (
     <div className="w-full">
