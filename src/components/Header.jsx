@@ -54,11 +54,11 @@ export default function Header({ setResults }) {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M13.0371 13.2131C10.511 15.7772 6.41324 15.7796 3.88435 13.2185C1.35547 10.6574 1.35307 6.50256 3.87909 3.93843C6.40511 1.3743 10.5029 1.37193 13.0318 3.93304C15.5607 6.49415 15.5631 10.649 13.0371 13.2131ZM13.8151 15.213C10.4944 17.9751 5.58383 17.7859 2.48077 14.6433C-0.824223 11.2962 -0.827316 5.86628 2.47386 2.51529C5.77504 -0.83569 11.1304 -0.83883 14.4354 2.50828C17.5384 5.65088 17.7308 10.6295 15.0104 13.9997L21.0243 20.0902L19.829 21.3035L13.8151 15.213Z"
                   fill="#4F46E5"
-                  fill-opacity="0.8"
+                  fillOpacity="0.8"
                 />
               </svg>
             </Link>
@@ -90,8 +90,8 @@ export default function Header({ setResults }) {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M24.4045 16H8.94916C9.02154 11.794 12.4536 8.4068 16.6768 8.4068C20.9 8.4068 24.3321 11.794 24.4045 16Z"
                 fill="#F9D20A"
               />
@@ -134,11 +134,11 @@ export default function Header({ setResults }) {
                 fill="#F9D20A"
               />
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M59.8352 12.5358C59.1133 12.7448 58.3502 12.8569 57.561 12.8569C53.054 12.8569 49.4004 9.20327 49.4004 4.69632C49.4004 2.94798 49.9502 1.32805 50.8864 0C47.486 0.984696 45 4.12176 45 7.83947C45 12.3464 48.6536 16 53.1606 16C55.9192 16 58.3581 14.6312 59.8352 12.5358Z"
                 fill="#8F93FF"
-                fill-opacity="0.4"
+                fillOpacity="0.4"
               />
             </svg>
           ) : (
@@ -151,11 +151,11 @@ export default function Header({ setResults }) {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M24.4044 16L8.94912 16C9.02151 11.794 12.4536 8.40679 16.6768 8.40679C20.9 8.40679 24.332 11.794 24.4044 16Z"
                 fill="#D9D9D9"
-                fill-opacity="0.2"
+                fillOpacity="0.2"
               />
               <rect
                 x="16.2712"
@@ -163,7 +163,7 @@ export default function Header({ setResults }) {
                 height="7.32203"
                 rx="0.911503"
                 fill="#D9D9D9"
-                fill-opacity="0.2"
+                fillOpacity="0.2"
               />
               <rect
                 y="16"
@@ -172,7 +172,7 @@ export default function Header({ setResults }) {
                 rx="0.911503"
                 transform="rotate(-90 0 16)"
                 fill="#D9D9D9"
-                fill-opacity="0.2"
+                fillOpacity="0.2"
               />
               <rect
                 width="1.82301"
@@ -180,7 +180,7 @@ export default function Header({ setResults }) {
                 rx="0.911503"
                 transform="matrix(0 -1 -1 0 33.6055 16)"
                 fill="#D9D9D9"
-                fill-opacity="0.2"
+                fillOpacity="0.2"
               />
               <rect
                 x="4.33899"
@@ -190,7 +190,7 @@ export default function Header({ setResults }) {
                 rx="0.911503"
                 transform="rotate(-45 4.33899 5.10608)"
                 fill="#D9D9D9"
-                fill-opacity="0.2"
+                fillOpacity="0.2"
               />
               <rect
                 width="1.82301"
@@ -198,11 +198,11 @@ export default function Header({ setResults }) {
                 rx="0.911503"
                 transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 29.2665 5.10608)"
                 fill="#D9D9D9"
-                fill-opacity="0.2"
+                fillOpacity="0.2"
               />
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M59.8352 12.5358C59.1133 12.7448 58.3502 12.8569 57.561 12.8569C53.054 12.8569 49.4004 9.20325 49.4004 4.6963C49.4004 2.94796 49.9502 1.32803 50.8864 -2.20942e-05C47.486 0.984674 45 4.12174 45 7.83945C45 12.3464 48.6536 16 53.1606 16C55.9192 16 58.3581 14.6312 59.8352 12.5358Z"
                 fill="#D9D9D9"
               />

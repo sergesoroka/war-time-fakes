@@ -16,7 +16,6 @@ function Search() {
   const contentLang = locale === "ua" ? "content" : "content_ru";
   const placeholder = locale === "ua" ? "ПОШУК ФЕЙКІВ" : "ПОИСК ФЕЙКОВ";
 
-  console.log(input);
 
   useEffect(() => {
     if (input !== "") {

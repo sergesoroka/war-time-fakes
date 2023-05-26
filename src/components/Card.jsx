@@ -10,17 +10,6 @@ export default function Card({ cardData, index }) {
 
   const lang = locale === "ua" ? uk : ru;
 
-  console.log(cardData.tags);
-
-  // const colorCat =
-  //   cardData.categories[0].title === "НЕПРАВДА"
-  //     ? "text-red-600"
-  //     : cardData.categories[0].title === "МАНІПУЛЯЦІЯ"
-  //     ? "text-amber-400"
-  //     : cardData.categories[0].title === "ФОТОФЕЙК"
-  //     ? "text-sky-600"
-  //     : "text-indigo-600";
-
   return (
     <motion.div
       className=" m-4"
@@ -44,14 +33,20 @@ export default function Card({ cardData, index }) {
         </span>
         {format(new Date(cardData.date), "dd MMMM yyyy", { locale: lang })}
       </p>
-      <h2 className="mt-4 mb-2 font-medium text-gray-800 transition duration-300 ease-in-out hover:text-violet-600 dark:text-gray-200 dark:opacity-90">
+      <h2 className="mb-2 mt-4 select-none font-medium text-gray-800 transition duration-300 ease-in-out hover:text-violet-600 dark:text-gray-200 dark:opacity-90">
         <Link href={cardData.url} target="_blank" rel="noreferrer">
           {locale === "ua" ? cardData.title : cardData.title_ru}
         </Link>
       </h2>
       {cardData.tags.map((tag) => (
-        <span key={tag.id} className="mt-1 mr-3 inline-block text-[10px] tracking-wider uppercase font-medium text-gray-700 dark:text-gray-200 dark:opacity-60">
-           #&nbsp;{locale === "ua" ? tag.title : tag.title_ru} 
+        <span
+          key={tag.id}
+          className="mr-3 mt-1 inline-block text-[10px] font-medium uppercase tracking-wider text-gray-700 dark:text-gray-200 dark:opacity-60"
+        >
+          <Link href={`/tag/${locale === "ua" ? tag.title : tag.title_ru}`}>
+            {" "}
+            #&nbsp;{locale === "ua" ? tag.title : tag.title_ru}{" "}
+          </Link>
         </span>
       ))}
     </motion.div>
