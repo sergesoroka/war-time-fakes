@@ -58,7 +58,7 @@ export default function CardLayout({
           })}
       </div>
       {data && data.data.length < 1 && (
-        <div className="flex justify-center  font-medium uppercase text-indigo-700 dark:text-gray-200">
+        <div className="flex justify-center tracking-wider font-[9px] uppercase text-indigo-700 dark:text-gray-200">
           {locale == "ua" ? " немає даних" : " нет данных"} за{" "}
           {months.map((m) => m.id == month && m[monthLang])} {year}
         </div>
@@ -68,7 +68,7 @@ export default function CardLayout({
           <button
             className={
               year == 2023 && category == 1
-                ? " mb-4 mr-2 mt-4 cursor-pointer select-none rounded-full  border border-solid border-indigo-600 px-4 py-2 text-[9px] font-medium uppercase  tracking-wider text-gray-700 hover:border-indigo-500 hover:bg-indigo-500 hover:text-white dark:text-gray-200 lg:text-[12px]"
+                ? " mb-4 mr-2 mt-4 cursor-pointer select-none rounded-full  border border-solid border-indigo-600 px-4 py-2 text-[9px] font-medium uppercase tracking-wider text-gray-700 hover:border-indigo-500 hover:bg-indigo-500 hover:text-white dark:text-gray-200 lg:text-[12px]"
                 : " mb-4 mr-2 mt-4 select-none rounded-full border border-solid border-indigo-600 bg-indigo-600 px-4 py-2 text-[9px] font-medium uppercase  tracking-wider text-white lg:text-[12px]"
             }
             onClick={() => {

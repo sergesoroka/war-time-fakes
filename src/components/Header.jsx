@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 
-export default function Header({ setResults }) {
+export default function Header() {
   const router = useRouter();
   const { pathname, asPath, query, locale } = router;
 

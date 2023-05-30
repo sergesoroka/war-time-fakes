@@ -33,7 +33,7 @@ export default function Home() {
 
   return (
     <div className="w-full">
-      <Header setResults={setResults} />
+      <Header  />
       <div className="mx-4 lg:flex lg:justify-between">
         <div className="mt-4 lg:w-1/6">
           <Sidebar
