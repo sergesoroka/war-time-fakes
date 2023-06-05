@@ -15,7 +15,7 @@ export default function Months({ setMonth, month, setPage }) {
     { id: 8, monthUk: "Серпень", monthRu: "Август" },
     { id: 9, monthUk: "Вересень", monthRu: "Сентябрь" },
     { id: 10, monthUk: "Жовтень", monthRu: "Октябрь" },
-    { id: 11, monthUk: "Лістопад", monthRu: "Ноябрь" },
+    { id: 11, monthUk: "Листопад", monthRu: "Ноябрь" },
     { id: 12, monthUk: "Грудень", monthRu: "Декабрь" },
   ];
   return (

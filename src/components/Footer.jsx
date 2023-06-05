@@ -12,7 +12,7 @@ export default function Footer() {
       </div>
       <div className="text-indigo-600 hover:text-indigo-700 dark:text-gray-200 dark:opacity-90">
         <Link href="/about">
-          {locale === "ua" ? "Про проект" : "О проекте"}
+          {locale === "ua" ? "Про проєкт" : "О проекте"}
         </Link>
       </div>
     </div>

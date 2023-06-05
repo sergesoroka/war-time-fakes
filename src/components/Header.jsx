@@ -66,15 +66,15 @@ export default function Header() {
         )}
 
         <p
-          className="cursor-pointer select-none pr-2 text-[13px] font-medium text-indigo-700 dark:text-gray-200 dark:opacity-90"
+          className="cursor-pointer select-none pr-4 text-[13px] font-medium text-indigo-700 dark:text-gray-200 dark:opacity-90"
           onClick={() =>
             router.push({ pathname, query }, asPath, { locale: lang })
           }
         >
-          {locale === "ua" ? "РОСІЙСЬКА" : "УКРАИНСКИЙ"}
+          {locale === "ua" ? "RU" : "UA"}
         </p>
         <p
-          className="ml-2 cursor-pointer select-none pr-2 text-[13px] font-medium text-indigo-700 dark:text-indigo-100"
+          className="ml-2 cursor-pointer select-none pr-4 text-[13px] font-medium text-indigo-700 dark:text-indigo-100"
           onClick={() =>
             theme == "dark" ? setTheme("light") : setTheme("dark")
           }
