@@ -29,7 +29,7 @@ export default function Sidebar({
         <li
           className={
             category === cat.id
-              ? "block w-40 select-none bg-indigo-600 px-3 py-1 text-white lg:mb-3 "
+              ? "block select-none bg-indigo-600 px-2 py-1 text-white lg:mb-3 "
               : "block cursor-pointer select-none px-3 py-1 tracking-wider text-gray-600 dark:text-gray-200 dark:opacity-90 lg:mb-3"
           }
           onClick={() => {

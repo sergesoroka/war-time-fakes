@@ -73,7 +73,7 @@ export default function CardLayout({
             }
             onClick={() => {
               setCategory(1);
-              setMonth(1);
+              setMonth(0);
               setYear(2023);
             }}
           >

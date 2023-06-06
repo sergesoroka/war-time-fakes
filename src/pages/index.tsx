@@ -8,7 +8,7 @@ import useMeasure from "react-use-measure";
 export default function Home() {
   const [ref, bounds] = useMeasure();
   const [year, setYear] = useState(2023);
-  const [month, setMonth] = useState(1);
+  const [month, setMonth] = useState(0);
 
   const [category, setCategory] = useState(1);
 
@@ -17,19 +17,20 @@ export default function Home() {
   const [page, setPage] = useState(1);
 
   const yearPlaceholder = year ? "&year=" + year : null;
+  const monthPlaceholder = month !== 0 ? "&month=" + month : '';
 
   const [results, setResults] = useState([]);
 
   useEffect(() => {
     fetch(
-      `https://vox-dashboard.ra-devs.tech/api/wpposts?per_page=80${yearPlaceholder}&month=${month}&category=${category}`
+      `https://vox-dashboard.ra-devs.tech/api/wpposts?per_page=80${yearPlaceholder}${monthPlaceholder}&category=${category}`
     )
       .then((res) => res.json())
       .then((data) => {
         setData(data);
         setLoading(false);
       });
-  }, [page, year, month, category, yearPlaceholder, results]);
+  }, [page, year, monthPlaceholder, category, yearPlaceholder, results]);
 
   return (
     <div className="w-full">
