@@ -25,11 +25,11 @@ export default function Months({ setMonth, month, setPage }) {
           className={
             month !== monthItem.id
               ? "cursor-pointer select-none rounded-full border border-solid  border-indigo-600 mb-4 mr-2 px-3 py-1 text-[10px] lg:text-[12px]  font-medium tracking-wider text-gray-700 dark:text-gray-200 hover:border-indigo-500 hover:bg-indigo-500 hover:text-white"
-              : "select-none rounded-full border border-solid border-indigo-600 bg-indigo-600 mb-4 mr-2 px-3 py-1 text-[10px] lg:text-[12px]  font-medium tracking-wider text-white"
+              : "cursor-pointer select-none rounded-full border border-solid border-indigo-600 bg-indigo-600 mb-4 mr-2 px-3 py-1 text-[10px] lg:text-[12px]  font-medium tracking-wider text-white"
           }
           key={monthItem.id}
           onClick={() => {
-            setMonth(monthItem.id);
+            setMonth(month !== monthItem.id ? monthItem.id : 0);
             setPage(1);
           }}
         >
