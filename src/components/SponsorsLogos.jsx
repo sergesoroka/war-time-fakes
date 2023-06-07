@@ -6,7 +6,7 @@ function SponsorsLogos() {
 
   console.log(theme);
   return (
-    <div className="mx-8 my-4 items-center justify-between lg:flex">
+    <div className="md:mx-8 my-2 items-center gap-8 justify-between lg:flex">
       <Image
         className="h-[30px] w-[165px] mt-4"
         src="/Moving-Forward-Together.png"

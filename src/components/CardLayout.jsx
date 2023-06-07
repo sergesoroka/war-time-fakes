@@ -81,7 +81,7 @@ export default function CardLayout({
           </button>
         </div>
       )}
-      <SponsorsLogos />
+      {/* <SponsorsLogos /> */}
     </div>
   );
 }
