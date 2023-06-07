@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import Card from "./Card";
 import Months from "./Months";
-import Spinner from "../components/Spinner/Spinner";
+import SponsorsLogos from '../components/SponsorsLogos';
 import useMeasure from "react-use-measure";
 
 import { months } from "../utills/monthNames";
@@ -81,6 +81,7 @@ export default function CardLayout({
           </button>
         </div>
       )}
+      <SponsorsLogos />
     </div>
   );
 }
