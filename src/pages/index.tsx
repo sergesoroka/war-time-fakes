@@ -17,13 +17,13 @@ export default function Home() {
   const [page, setPage] = useState(1);
 
   const yearPlaceholder = year ? "&year=" + year : null;
-  const monthPlaceholder = month !== 0 ? "&month=" + month : '';
+  const monthPlaceholder = month !== 0 ? "&month=" + month : "";
 
   const [results, setResults] = useState([]);
 
   useEffect(() => {
     fetch(
-      `https://vox-dashboard.ra-devs.tech/api/wpposts?per_page=80${yearPlaceholder}${monthPlaceholder}&category=${category}`
+      `https://dashboard.voxukraine.org/api/wpposts?per_page=80${yearPlaceholder}${monthPlaceholder}&category=${category}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -34,7 +34,7 @@ export default function Home() {
 
   return (
     <div className="w-full">
-      <Header  />
+      <Header />
       <div className="mx-4 lg:flex lg:justify-between">
         <div className="mt-4 lg:w-1/6">
           <Sidebar

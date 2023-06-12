@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import Card from "./Card";
 import Months from "./Months";
-import SponsorsLogos from '../components/SponsorsLogos';
+
 import useMeasure from "react-use-measure";
 
 import { months } from "../utills/monthNames";
@@ -27,8 +27,6 @@ export default function CardLayout({
       <div className="my-8 items-center pl-6 pr-2 text-blue-500" ref={ref}>
         <Months setMonth={setMonth} month={month} setPage={setPage} />
       </div>
-
-      {/* {(data && data.data.length < 1) && <Spinner />} */}
 
       <div className="grid  gap-2 sm:grid-cols-1 lg:grid-cols-3">
         {results.length < 1 &&
@@ -58,7 +56,7 @@ export default function CardLayout({
           })}
       </div>
       {data && data.data.length < 1 && (
-        <div className="flex justify-center tracking-wider font-[9px] uppercase text-indigo-700 dark:text-gray-200">
+        <div className="flex justify-center font-[9px] uppercase tracking-wider text-indigo-700 dark:text-gray-200">
           {locale == "ua" ? " немає даних" : " нет данных"} за{" "}
           {months.map((m) => m.id == month && m[monthLang])} {year}
         </div>
@@ -81,7 +79,6 @@ export default function CardLayout({
           </button>
         </div>
       )}
-      {/* <SponsorsLogos /> */}
     </div>
   );
 }

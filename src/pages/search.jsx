@@ -16,11 +16,10 @@ function Search() {
   const contentLang = locale === "ua" ? "content" : "content_ru";
   const placeholder = locale === "ua" ? "ПОШУК ФЕЙКІВ" : "ПОИСК ФЕЙКОВ";
 
-
   useEffect(() => {
     if (input !== "") {
       fetch(
-        `https://vox-dashboard.ra-devs.tech/api/wpposts?per_page=${page}&search=${input}`
+        `https://dashboard.voxukraine.org/api/wpposts?per_page=${page}&search=${input}`
       )
         .then((response) => response.json())
         .then((json) => {

@@ -15,7 +15,7 @@ export default function Tag() {
 
   const [results, setResults] = useState([]);
   useEffect(() => {
-    fetch(`https://vox-dashboard.ra-devs.tech/api/wpposts?per_page=1500`)
+    fetch(`https://dashboard.voxukraine.org/api/wpposts?per_page=1500`)
       .then((response) => response.json())
       .then((json) => {
         const results = json.data.filter((item) => {
